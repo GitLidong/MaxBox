@@ -7,15 +7,23 @@
     android:layout_height="match_parent"
     tools:context="com.lidong.maxbox.activity.LedActivity">
 
+    <ImageView
+        android:id="@+id/led_image"
+        android:layout_width="383dp"
+        android:layout_height="565dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/led_recycleview"
         android:layout_width="368dp"
-        android:layout_height="79dp"
-        android:layout_marginLeft="0dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginBottom="0dp">
+        app:layout_constraintLeft_toLeftOf="parent">
 
     </android.support.v7.widget.RecyclerView>
 

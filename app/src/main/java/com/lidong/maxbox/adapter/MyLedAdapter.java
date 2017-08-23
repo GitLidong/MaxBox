@@ -1,6 +1,5 @@
 package com.lidong.maxbox.adapter;
 
-import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.lidong.maxbox.R;
+import com.lidong.maxbox.myinterface.ViewCallback;
 
 import java.util.List;
 
@@ -18,9 +18,11 @@ import java.util.List;
 public class MyLedAdapter extends RecyclerView.Adapter<MyLedAdapter.ViewHolder>{
 
     private List<Integer> listBitmaps;
+    private ViewCallback viewCallback;
 
-    public MyLedAdapter(List<Integer> listBitmaps){
+    public MyLedAdapter(List<Integer> listBitmaps,ViewCallback viewCallback){
         this.listBitmaps = listBitmaps;
+        this.viewCallback = viewCallback;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
@@ -35,8 +37,15 @@ public class MyLedAdapter extends RecyclerView.Adapter<MyLedAdapter.ViewHolder>{
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_led,parent,false);
+        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_led,parent,false);
         final ViewHolder holder =new ViewHolder(view);
+        holder.ledImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                viewCallback.setView(position);
+            }
+        });
         return holder;
     }
 
