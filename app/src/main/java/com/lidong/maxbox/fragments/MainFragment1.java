@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.lidong.maxbox.R;
+import com.lidong.maxbox.activity.CompassMainActivity;
 import com.lidong.maxbox.activity.LedActivity;
 
 
@@ -20,7 +21,8 @@ import com.lidong.maxbox.activity.LedActivity;
  * Created by ubuntu on 17-8-22.
  */
 
-public class MainFragment1 extends Fragment{
+public class MainFragment1 extends Fragment implements View.OnClickListener,
+        View.OnTouchListener{
 
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
@@ -28,37 +30,39 @@ public class MainFragment1 extends Fragment{
 
         Button btn_led = (Button) view.findViewById(R.id.btn_led);
         LinearLayout layout_led = (LinearLayout) view.findViewById(R.id.lauout_led);
-
-        layout_led.setOnClickListener(onViewClicked);
-        btn_led.setOnClickListener(onViewClicked);
-        layout_led.setOnTouchListener(onViewTouch);
+        LinearLayout layout_compass = (LinearLayout) view.findViewById(R.id.lauout_compass);
+        layout_compass.setOnClickListener((View.OnClickListener) this);
+        layout_led.setOnClickListener((View.OnClickListener) this);
+        layout_led.setOnTouchListener(this);
+        layout_compass.setOnTouchListener(this);
 
         return view;
     }
 
-    private View.OnClickListener onViewClicked = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Log.i("MainFragment1","btnClicked");
-            Intent intent = new Intent(getActivity(), LedActivity.class);
-            startActivity(intent);
-
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.lauout_compass:
+                Intent intent1 = new Intent(getActivity(), CompassMainActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.lauout_led:
+                Intent intent2 = new Intent(getActivity(), LedActivity.class);
+                startActivity(intent2);
+                break;
         }
-    };
+    }
 
-    private View.OnTouchListener onViewTouch = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            switch (event.getAction()){
-                case MotionEvent.ACTION_DOWN:
-                    v.setBackgroundColor(Color.GREEN);
-                    break;
-                case MotionEvent.ACTION_UP:
-                    v.setBackgroundColor(Color.parseColor("#50FFFFFF"));
-                    break;
-            }
-            return false;
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        switch (motionEvent.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                view.setBackgroundColor(Color.parseColor("#FFC125"));
+                break;
+            case MotionEvent.ACTION_UP:
+                view.setBackgroundColor(Color.parseColor("#FF8C00"));
+                break;
         }
-    };
-
+        return false;
+    }
 }
