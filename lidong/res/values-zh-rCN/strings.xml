@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">工具箱</string>
+    <string name="action_settings">设置</string>
+    <string name="common_shortcut_create_hint">&#160;快捷已创建！</string>
+    <!-- 测量工具分类 -->
+    <string name="measure_title">Measure</string>
+    <!-- 计时工具分类 -->
+    <string name="timing_title">Timing</string>
+    <!-- 常用便捷工具分类 -->
+    <string name="convernient_title">Convenient tool</string>
+    <string name="convernient_qrcode">二维码</string>
+    <string name="convernient_mirror">镜子</string>
+    <string name="convernient_magnifier">放大镜</string>
+    <string name="convernient_level">水平仪</string>
+    <string name="convernient_protractor">量角器</string>
+    <string name="convernient_ruler">刻度尺</string>
+    <!-- 计算工具分类 -->
+    <string name="calculator_title">Calculator</string>
+    <!-- 尺寸 -->
+    <string name="size_title">尺码表</string>
+    <string name="size_tool_desc">大小可以根据品牌和产品不同而不同。请参考相关的产品信息确定准确的尺寸。</string>
+    <string name="size_fragment_clothes">衣服</string>
+    <string name="size_fragment_hat">帽子</string>
+    <string name="size_fragment_ring">指环</string>
+    <string name="size_fragment_shoes">鞋子</string>
+    <string name="size_fragment_underwear">内衣</string>
+    <string name="size_fragment_clothes_jeans">牛仔裤</string>
+    <string name="size_tools_list_man">男士</string>
+    <string name="size_tools_list_woman">女士</string>
+    <string name="size_fragment_clothes_jeans_header_th1">Size(inch)</string>
+    <string name="size_fragment_clothes_jeans_header_th2">Size(cm)</string>
+    <string name="size_fragment_clothes_header_th1">US</string>
+    <string name="size_fragment_clothes_header_th2">UK</string>
+    <string name="size_fragment_clothes_header_th3">France</string>
+    <string name="size_fragment_clothes_header_th4">Italy</string>
+    <string name="size_fragment_clothes_header_th5">Korea</string>
+    <string name="size_fragment_clothes_header_th6">Japan</string>
+    <string name="size_fragment_shoes_header_th1">US</string>
+    <string name="size_fragment_shoes_header_th2">UK</string>
+    <string name="size_fragment_shoes_header_th3">EU</string>
+    <string name="size_fragment_shoes_header_th4">Korea</string>
+    <string name="size_fragment_shoes_header_th5">Japan</string>
+    <string name="size_fragment_shoes_header_th6">Size(cm)</string>
+    <string name="size_fragment_hat_header_th1">US</string>
+    <string name="size_fragment_hat_header_th2">UK</string>
+    <string name="size_fragment_hat_header_th3">Japan</string>
+    <string name="size_fragment_hat_header_th4">Size(cm)</string>
+    <string name="size_fragment_hat_header_th5">Size(inch)</string>
+    <string name="size_fragment_ring_header_th1">US</string>
+    <string name="size_fragment_ring_header_th2">UK</string>
+    <string name="size_fragment_ring_header_th3">EU/KR/JP</string>
+    <string name="size_fragment_ring_header_th4">circumfer-\nence(mm)</string>
+    <string name="size_fragment_ring_header_th5">diameter\n(mm)</string>
+    <string name="size_fragment_underwear_header_th1">US</string>
+    <string name="size_fragment_underwear_header_th2">France</string>
+    <string name="size_fragment_underwear_header_th3">EU/KR</string>
+    <string name="size_fragment_underwear_header_th4">Japan</string>
+    <string name="size_fragment_underwear_header_th5">Top/Under\n(cm)</string>
+    <string name="soundmetel">分贝仪</string>
+    <string name="decibelinfo10">呼吸声</string>
+    <string name="decibelinfo20">树上叶子碰撞声</string>
+    <string name="decibelinfo30">亲密的窃窃私语</string>
+    <string name="decibelinfo40">安静的图书馆 低声细语</string>
+    <string name="decibelinfo50">按键的办公室 空调外机工作声</string>
+    <string name="decibelinfo60">两人正常谈话声</string>
+    <string name="decibelinfo70">繁忙的交通 吸尘器工作声</string>
+    <string name="decibelinfo80">地铁里 钢琴演奏声</string>
+    <string name="decibelinfo90">KTV内 工厂内部</string>
+
+    <!-- Ruler -->
+    <string name="tool_ruler_setscale">确认你修改刻度吗</string>
+    <string name="tool_ruler_ok">确定</string>
+    <string name="tool_ruler_reset">重置</string>
+    <string name="tool_ruler_cancel">取消</string>
+    <string name="tool_ruler_set">设置刻度</string>
+    <!-- compass -->
+    <string name="compass_title">指南针</string>
+    <string name="compass_north">北</string>
+    <string name="compass_east">东</string>
+    <string name="compass_south">南</string>
+    <string name="compass_west">西</string>
+    <string name="compass_northeast">东北</string>
+    <string name="compass_southeast">东南</string>
+    <string name="compass_northwest">西北</string>
+    <string name="compass_southwest">西南</string>
+    <string name="compass_north_short">n</string>
+    <string name="compass_east_short">e</string>
+    <string name="compass_south_short">s</string>
+    <string name="compass_west_short">w</string>
+    <string name="compass_northeast_short">ne</string>
+    <string name="compass_southeast_short">se</string>
+    <string name="compass_northwest_short">nw</string>
+    <string name="compass_southwest_short">sw</string>
+    <string name="compass_cannot_get_location">获取不到您的位置</string>
+    <string name="compass_cannot_get_sensor">获取传感器失败</string>
+    <string name="compass_exit_toast">快速按两次退出应用</string>
+    <string name="compass_text_exit">退出</string>
+    <string name="compass_text_calibration">关于校准</string>
+    <string name="compass_text_calibration_title">校准</string>
+    <string name="compass_text_calibration_help">请将手机面向天空和自己分别画8字三次进行校准</string>
+    <string name="compass_text_ok">Ok</string>
+    <string name="compass_north_latitude">北纬</string>
+    <string name="compass_east_longitude">东经</string>
+    <string name="compass_degree">°</string>
+    <string name="compass_minute">\'</string>
+    <string name="compass_second">\'\'</string>
+    <string name="compass_error">err</string>
+    <string name="compass_click_note">请按中间的‘8’字按钮</string>
+
+    <!-- flashlight -->
+    <string name="flashlight_title">手电筒</string>
+
+    <!-- unitconverter -->
+    <string name="unitconverter">单位换算</string>
+    <string name="unitconverter_length">长度</string>
+    <string name="unitconverter_area">面积</string>
+    <string name="unitconverter_weight">重量</string>
+    <string name="unitconverter_volume">体积</string>
+    <string name="unitconverter_temperature">温度</string>
+    <string name="unitconverter_time">时间</string>
+    <string name="unitconverter_pressure">压力</string>
+    <string name="unitconverter_speed">速度</string>
+    <string name="unitconverter_data">数据</string>
+    <string name="unitconverter_radioactivity">放射性</string>
+    <!-- QRCode -->
+    <!-- QRCode -->
+    <string name="msg_default_status">"将 QR 码放在取景器的矩形框内以便对它进行扫描。"</string>
+    <string name="msg_camera_framework_bug">"抱歉，此 Android 相机遇到问题，您可能需要重新启动此设备。"</string>
+    <string name="qrcode_result">扫描结果</string>
+    <string name="qrcode_result_copy_hint">扫描结果已复制到剪切板！</string>
+    <string name="qrcode_fail">不能识别扫描内容！</string>
+
+</resources>

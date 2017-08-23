@@ -1,0 +1,55 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:windowActionBar">true</item>
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <!-- add QRCode -->
+    <style name="TitleText">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TypeTextList">
+        <item name="android:textSize">30px</item>
+        <item name="android:textColor">#4C4C4C</item>
+    </style>
+
+    <style name="InputEdit">
+        <item name="android:textSize">22px</item>
+        <item name="android:textColor">#9E9E9E</item>
+    </style>
+
+    <style name="EncodeTextName">
+        <item name="android:textSize">30px</item>
+        <item name="android:textColor">#4C4C4C</item>
+    </style>
+
+    <style name="ResultText" >
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+        <style name="ListTextTitle" >
+         <item name="android:textSize">15sp</item>
+         <item name="android:textColor">#4C4C4C</item>
+    </style>
+       <style name="ListText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#4C4C4C</item>
+    </style>
+
+</resources>

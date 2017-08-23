@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 前摄配置 -->
+    <integer name="config_camera_facing_front">1</integer>
+    <!-- 后摄配置 -->
+    <integer name="config_camera_facing_back">0</integer>
+
+    <!-- led -->
+    <integer name="config_led_delay_time">1000</integer>
+</resources>

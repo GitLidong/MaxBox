@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="Decibelstr">
+        <item>10dB</item>
+        <item>20dB</item>
+        <item>30dB</item>
+        <item>40dB</item>
+        <item>50dB</item>
+        <item>60dB</item>
+        <item>70dB</item>
+        <item>80dB</item>
+        <item>90dB</item>
+    </string-array>
+    <string-array name="DecibelInfo">
+        <item>@string/decibelinfo10</item>
+        <item>@string/decibelinfo20</item>
+        <item>@string/decibelinfo30</item>
+        <item>@string/decibelinfo40</item>
+        <item>@string/decibelinfo50</item>
+        <item>@string/decibelinfo60</item>
+        <item>@string/decibelinfo70</item>
+        <item>@string/decibelinfo80</item>
+        <item>@string/decibelinfo90</item>
+    </string-array>
+    <string-array name="compass_directions">
+        <item>@string/compass_north</item>
+        <item>@string/compass_east</item>
+        <item>@string/compass_south</item>
+        <item>@string/compass_west</item>
+        <item>@string/compass_northeast</item>
+        <item>@string/compass_southeast</item>
+        <item>@string/compass_northwest</item>
+        <item>@string/compass_southwest</item>
+    </string-array>
+    <string-array name="compass_short_directions">
+        <item>@string/compass_north_short</item>
+        <item>@string/compass_east_short</item>
+        <item>@string/compass_south_short</item>
+        <item>@string/compass_west_short</item>
+        <item>@string/compass_northeast_short</item>
+        <item>@string/compass_southeast_short</item>
+        <item>@string/compass_northwest_short</item>
+        <item>@string/compass_southwest_short</item>
+    </string-array>
+    <string-array name="tools_size_clothes_man">
+        <item>~34(~XS,S):~34:~38:~44:85:~S</item>
+        <item>36(~XS,S):36:40:46:90:S</item>
+        <item>38(~S,M):38:42:48:95:M</item>
+        <item>40(~S,M):40:44:50:95:M</item>
+        <item>42(~M,L):42:46:52:100:L</item>
+        <item>44(~M,L):44:48:54:105:L</item>
+        <item>46~(M,L~):46~:50~:56~:110:XL~</item>
+    </string-array>
+    <string-array name="tools_size_clothes_woman">
+        <item>~0(~XXS):~2:~32:~34: :~XS</item>
+        <item>2(~XS,S):4:34:36:44(85):S</item>
+        <item>4(~XS,S):6:36:68:55(90):S</item>
+        <item>6(~S,M):8:38:40:66(95):M</item>
+        <item>8(~S,M):10:40:42:77(100):M</item>
+        <item>10(~M,L):12:42:44:88(105):L</item>
+        <item>12(~M,L):14:44:46:110:L~</item>
+        <item>14(L):16:46:48: :XL</item>
+        <item>16(L):18~:48~:50~: :XL~</item>
+    </string-array>
+    <string-array name="tools_size_clothes_jeans_man">
+        <item>26:66</item>
+        <item>27:68</item>
+        <item>28:71</item>
+        <item>29:73</item>
+        <item>30:76</item>
+        <item>31:78</item>
+        <item>32:81</item>
+        <item>33:83</item>
+        <item>34:86</item>
+        <item>35:89</item>
+        <item>36:91</item>
+        <item>38:96</item>
+        <item>40:101</item>
+        <item>42:106</item>
+        <item>44:111</item>
+        <item>46:116</item>
+        <item>48:121</item>
+        <item>50:126</item>
+    </string-array>
+    <string-array name="tools_size_clothes_jeans_woman">
+        <item>26:56</item>
+        <item>27:58</item>
+        <item>28:61</item>
+        <item>29:63</item>
+        <item>30:66</item>
+        <item>31:68</item>
+        <item>32:71</item>
+        <item>33:73</item>
+        <item>34:76</item>
+        <item>35:79</item>
+        <item>36:81</item>
+    </string-array>
+    <string-array name="tools_size_hat_man">
+        <item>XS(6 1/2):6 3/8:SS:52:20 1/2</item>
+        <item>XS(6 5/8):6 1/2:SS:53:21</item>
+        <item>S(6 3/4):6 5/8:S:54:21 1/4</item>
+        <item>S(6 7/8):6 3/4:S:55:21 1/2</item>
+        <item>S(7):6 7/8:M:56:21 7/8</item>
+        <item>M(7 1/8):7:M:57:22 1/4</item>
+        <item>M(7 1/4):7 1/8:L:58:22 5/8</item>
+        <item>L(7 3/8):7 1/4:L:59:23</item>
+        <item>L(7 1/2):7 3/8:LL:60:23 1/2</item>
+        <item>XL(7 5/8):7 1/2:LL:61:23 7/8</item>
+        <item>XL(7 3/4):7 5/8:LL:62:24 1/4</item>
+    </string-array>
+    <string-array name="tools_size_hat_woman">
+        <item>XS(6 1/2):6 3/8:SSS:52:20 1/2</item>
+        <item>XS(6 5/8):6 1/2:SSS:53:21</item>
+        <item>S(6 3/4):6 5/8:SS:54:21 1/4</item>
+        <item>S(6 7/8):6 3/4:S:55:21 1/2</item>
+        <item>S(7):6 7/8:S:56:21 7/8</item>
+        <item>M(7 1/8):7:M:57:22 1/4</item>
+        <item>M(7 1/4):7 1/8:M:58:22 5/8</item>
+        <item>L(7 3/8):7 1/4:L:59:23</item>
+        <item>L(7 1/2):7 3/8:L:60:23 1/2</item>
+        <item>XL(7 5/8):7 1/2:LL:61:23 7/8</item>
+        <item>XL(7 3/4):7 5/8:LL:62:24 1/4</item>
+    </string-array>
+    <string-array name="tools_size_ring">
+        <item>1:C:1:~40.8:~13</item>
+        <item>2:D:2:41.9:13 1/3</item>
+        <item>2.5:E:3:42.9:13 2/3</item>
+        <item>3:F:4:44:14</item>
+        <item>3.5:G:5:45:14 1/3</item>
+        <item>3.5~4:G~H:6:46.1:14 2/3</item>
+        <item>4~4.5:H~I:7:47.1:15</item>
+        <item>4.5~5:I~J:8:48.2:15 1/3</item>
+        <item>5:J:9:49.2:15 2/3</item>
+        <item>5.5:K:10:50.3:16</item>
+        <item>6:L:11:51.3:16 1/3</item>
+        <item>6.5:L~M:12:52.4:16 2/3</item>
+        <item>6.5~7:M~N:13:53.4:17</item>
+        <item>7~7.5:N~O:14:54.5:17 1/3</item>
+        <item>7.5~8:O~P:15:55.5:17 2/3</item>
+        <item>8:P:16:56.6:18</item>
+        <item>8.5:Q:17:57.6:18 1/3</item>
+        <item>9:R:18:58.6:18 2/3</item>
+        <item>9.5:S:19:59.7:19</item>
+        <item>10:T:20:60.7:19 1/3</item>
+        <item>10~10.5:T~U:21:61.8:19 2/3</item>
+        <item>10.5:U:22:62.8:20</item>
+        <item>11:V:23:63.9:20 1/3</item>
+        <item>11.5:W:24:64.9:20 2/3</item>
+        <item>12:X:25:66:21</item>
+        <item>12.5:Y:26:67:21 1/3</item>
+        <item>13:Z:27:68:21 2/3</item>
+    </string-array>
+    <string-array name="tools_size_shoes_man">
+        <item>~5:~4 1/2:~37:230:~23:~23</item>
+        <item>5 1/2:5:38:235:23.5:23.5</item>
+        <item>6:5 1/2:39:240:24:24</item>
+        <item>6 1/2:6:39:245:24.5:24.5</item>
+        <item>7:6 1/2:40:250:25:25</item>
+        <item>7 1/2:7:41:255:25.5:25.5</item>
+        <item>8:7 1/2:42:260:26:26</item>
+        <item>8 1/2:8:43:265:26.5:26.5</item>
+        <item>9:8 1/2:44:270:27:27</item>
+        <item>9 1/2:9:45:275:27.5:27.5</item>
+        <item>10:9 1/2:46:280:28:28</item>
+        <item>10 1/2:10:47:285:28.5:28.5</item>
+        <item>11~:10 1/2~:48~:290:29~:29~</item>
+    </string-array>
+    <string-array name="tools_size_shoes_woman">
+        <item>~4:~2:~32:210:~21:~21</item>
+        <item>4.5:2.5:33:215:21.5:21.5</item>
+        <item>5:3:34:220:22:22</item>
+        <item>5.5:3.5:35:225:22.5:22.5</item>
+        <item>6:4:36:230:23:23</item>
+        <item>6.5:4.5:37:235:23.5:23.5</item>
+        <item>7:5:38:240:24:25</item>
+        <item>7.5:5.5:39:245:24.5:24.5</item>
+        <item>8:6:40:250:25:25</item>
+        <item>8.5:6.5:41:255:25.5:25.5</item>
+        <item>9:7:42:260:26:26</item>
+        <item>9.5:7.5:43:265:26.5:26.5</item>
+        <item>10~:8~:44~:270:27~:27~</item>
+    </string-array>
+    <string-array name="tools_size_underwear">
+        <item>30A:80A:65A:A65:75/65</item>
+        <item>32A:85A:70A:A70:80/70</item>
+        <item>34A:90A:75A:A75:85/75</item>
+        <item>36A:95A:80A:A80:90/80</item>
+        <item>38A:100A:95A:A85:95/85</item>
+        <item>40A:105A:100A:A90:100/90</item>
+        <item>30B:80B:65B:B65:78/65</item>
+        <item>32B:85B:70B:B70:83/70</item>
+        <item>34B:90B:75B:B75:88/75</item>
+        <item>36B:95B:80B:B80:93/80</item>
+        <item>38B:100B:85B:B85:98/85</item>
+        <item>40B:105B:90B:B90:103/90</item>
+        <item>30C:80C:60C:C65:80/65</item>
+        <item>32C:85C:70C:C70:85/70</item>
+        <item>34C:90C:75C:C75:90/75</item>
+        <item>36C:95C:80C:C80:95/80</item>
+        <item>38C:100C:85C:C85:100/85</item>
+        <item>40C:105C:90C:C90:105/90</item>
+        <item>30D:80D:65D:D65:83/65</item>
+        <item>32D:85D:70D:D70:88/70</item>
+        <item>34D:90D:75D:D75:93/75</item>
+        <item>36D:95D:80D:D80:98/80</item>
+        <item>38D:100D:85D:D85:103/85</item>
+        <item>40D:105D:90D:D90:108/90</item>
+        <item>30E:80E:65E:E65:85/65</item>
+        <item>32E:85E:70E:E70:90/70</item>
+        <item>34E:90E:75E:E75:95/75</item>
+        <item>36E:95E:80E:E80:100/80</item>
+        <item>38E:100E:85E:E85:105/85</item>
+        <item>40E:105E:90E:E90:110/90</item>
+        <item>30F:80F:65F:F65:88/65</item>
+        <item>32F:85F:70F:F70:93/70</item>
+        <item>34F:90F:75F:F75:98/75</item>
+        <item>36F:95F:80F:F80:103/80</item>
+        <item>38F:100F:85F:F85:108/85</item>
+        <item>30F:105F:90F:F90:113/90</item>
+    </string-array>
+
+    <!-- unitverter -->
+    <string-array name="unitconverter_gvew_str_array">
+        <item>@string/unitconverter_length</item>
+        <item>@string/unitconverter_area</item>
+        <item>@string/unitconverter_weight</item>
+        <item>@string/unitconverter_volume</item>
+        <item>@string/unitconverter_temperature</item>
+        <item>@string/unitconverter_time</item>
+        <item>@string/unitconverter_pressure</item>
+        <item>@string/unitconverter_speed</item>
+        <item>@string/unitconverter_data</item>
+        <item>@string/unitconverter_radioactivity</item>
+    </string-array>
+    <string-array name="unitconverter_gvew_img_array">
+        <item>unitconverter_length</item>
+        <item>unitconverter_area</item>
+        <item>unitconverter_weight</item>
+        <item>unitconverter_volume</item>
+        <item>unitconverter_temperature</item>
+        <item>unitconverter_time</item>
+        <item>unitconverter_pressure</item>
+        <item>unitconverter_speed</item>
+        <item>unitconverter_data</item>
+        <item>unitconverter_radioactivity</item>
+    </string-array>
+    <string-array name="unit_length_list">
+        <item>mm</item>
+        <item>cm</item>
+        <item>m</item>
+        <item>km</item>
+        <item>yd</item>
+        <item>ft</item>
+        <item>inch</item>
+        <item>mile</item>
+        <item>尺</item>
+        <item>寸</item>
+        <item>丈</item>
+        <item>里</item>
+        <item>海里</item>
+    </string-array>
+    <string-array name="unit_area_list">
+        <item>cm²</item>
+        <item>m²</item>
+        <item>km²</item>
+        <item>ha</item>
+        <item>ac</item>
+        <item>ft²</item>
+        <item>in²</item>
+        <item>yd²</item>
+    </string-array>
+    <string-array name="unit_weight_list">
+        <item>mg</item>
+        <item>g</item>
+        <item>kg</item>
+        <item>t</item>
+        <item>gr.</item>
+        <item>oz</item>
+        <item>lb</item>
+        <item>匁</item>
+        <item>斤</item>
+    </string-array>
+    <string-array name="unit_volume_list">
+        <item>mℓ</item>
+        <item>dℓ</item>
+        <item>ℓ</item>
+        <item>cm³</item>
+        <item>m³</item>
+        <item>km³</item>
+        <item>in³</item>
+        <item>ft³</item>
+        <item>pt(US)</item>
+        <item>qt(US)</item>
+        <item>gal(US)</item>
+        <item>bl</item>
+        <item>石</item>
+        <item>斗</item>
+        <item>升</item>
+        <item>合</item>
+    </string-array>
+    <string-array name="unit_temperature_list">
+        <item>°C</item>
+        <item>°F</item>
+        <item>K</item>
+        <item>°R</item>
+    </string-array>
+    <string-array name="unit_time_list">
+        <item>ns</item>
+        <item>μs</item>
+        <item>ms</item>
+        <item>s</item>
+        <item>min</item>
+        <item>hour</item>
+        <item>day</item>
+        <item>week</item>
+        <item>year</item>
+    </string-array>
+    <string-array name="unit_pressure_list">
+        <item>Pa</item>
+        <item>Hpa</item>
+        <item>bar</item>
+        <item>Ba.b</item>
+        <item>atm</item>
+        <item>at</item>
+        <item>mmH2O</item>
+        <item>inHg</item>
+        <item>mmHg</item>
+        <item>torr</item>
+        <item>psi</item>
+        <item>kgf/mm²</item>
+    </string-array>
+    <string-array name="unit_speed_list">
+        <item>m/sec</item>
+        <item>km/h</item>
+        <item>fps</item>
+        <item>mph</item>
+        <item>kn、kt</item>
+    </string-array>
+    <string-array name="unit_data_list">
+        <item>bit</item>
+        <item>byte</item>
+        <item>KB</item>
+        <item>MB</item>
+        <item>GB</item>
+        <item>TB</item>
+    </string-array>
+    <string-array name="unit_radioactivity_list">
+        <item>μSv</item>
+        <item>mSv</item>
+        <item>Sv</item>
+    </string-array>
+    <string-array name="unit_length_value_list">
+        <item>1</item>
+        <item>0.1</item>
+        <item>0.001</item>
+        <item>1e-6</item>
+        <item>0.001094</item>
+        <item>0.003281</item>
+        <item>0.03937</item>
+        <item>6.2137e-7</item>
+        <item>0.0033</item>
+        <item>0.033</item>
+        <item>0.00033</item>
+        <item>2.5463e-7</item>
+        <item>5.3996e-7</item>
+    </string-array>
+    <string-array name="unit_area_value_list">
+        <item>1</item>
+        <item>0.001</item>
+        <item>10e-11</item>
+        <item>1e-8</item>
+        <item>2.47e-8</item>
+        <item>0.001076</item>
+        <item>0.155</item>
+        <item>0.00012</item>
+    </string-array>
+    <string-array name="unit_weight_value_list">
+        <item>1</item>
+        <item>0.001</item>
+        <item>1e-6</item>
+        <item>1e-9</item>
+        <item>0.015432</item>
+        <item>0.000035</item>
+        <item>2.2046e-6</item>
+        <item>0.0267</item>
+        <item>1.6666e-6</item>
+    </string-array>
+    <string-array name="unit_volume_value_list">
+        <item>1</item>
+        <item>0.01</item>
+        <item>0.001</item>
+        <item>1</item>
+        <item>1e-6</item>
+        <item>1e-15</item>
+        <item>0.061024</item>
+        <item>0.000035</item>
+        <item>0.002113</item>
+        <item>0.001057</item>
+        <item>0.000264</item>
+        <item>6.2898e-6</item>
+        <item>5.5435e-6</item>
+        <item>0.000055</item>
+        <item>0.000554</item>
+        <item>0.005544</item>
+    </string-array>
+    <string-array name="unit_temperature_value_list">
+        <item>1</item>
+        <item>33.8</item>
+        <item>274.15</item>
+        <item>493.47</item>
+    </string-array>
+    <string-array name="unit_time_value_list">
+        <item>1</item>
+        <item>0.001</item>
+        <item>1e-6</item>
+        <item>1e-9</item>
+        <item>1.6667e-11</item>
+        <item>2.7778e-13</item>
+        <item>1.1574e-14</item>
+        <item>1.6534e-15</item>
+        <item>3.171e-17</item>
+    </string-array>
+    <string-array name="unit_pressure_value_list">
+        <item>1</item>
+        <item>0.01</item>
+        <item>10e-6</item>
+        <item>10</item>
+        <item>9.8692e-6</item>
+        <item>0.00001</item>
+        <item>0.101972</item>
+        <item>0.000295</item>
+        <item>0.007501</item>
+        <item>0.007501</item>
+        <item>0.000145</item>
+        <item>1.0197e-7</item>
+    </string-array>
+    <string-array name="unit_speed_value_list">
+        <item>1</item>
+        <item>3.59997</item>
+        <item>3.280836</item>
+        <item>2.236935</item>
+        <item>1.943843</item>
+    </string-array>
+    <string-array name="unit_data_value_list">
+        <item>1</item>
+        <item>0.125</item>
+        <item>0.000122</item>
+        <item>1.1926e-7</item>
+        <item>1.1642e-10</item>
+        <item>1.1369e-13</item>
+    </string-array>
+    <string-array name="unit_radioactivity_value_list">
+        <item>1</item>
+        <item>0.001</item>
+        <item>1e-6</item>
+    </string-array>
+    <string-array name="led_happy_list">
+        <item>@string/led_happy_0</item>
+        <item>@string/led_happy_1</item>
+        <item>@string/led_happy_2</item>
+    </string-array>
+    <string-array name="led_sad_list">
+        <item>@string/led_sad_0</item>
+        <item>@string/led_sad_1</item>
+        <item>@string/led_sad_2</item>
+    </string-array>
+    <string-array name="led_heart_list">
+        <item>@string/led_heart_0</item>
+        <item>@string/led_heart_1</item>
+        <item>@string/led_heart_2</item>
+        <item>@string/led_heart_3</item>
+        <item>@string/led_heart_4</item>
+    </string-array>
+    <string-array name="led_beer_list">
+        <item>@string/led_beer_0</item>
+        <item>@string/led_beer_1</item>
+        <item>@string/led_beer_2</item>
+    </string-array>
+    <string-array name="led_mail_list">
+        <item>@string/led_mail_0</item>
+        <item>@string/led_mail_1</item>
+        <item>@string/led_mail_2</item>
+    </string-array>
+    <string-array name="led_sos_list">
+        <item>@string/led_sos_0</item>
+        <item>@string/led_sos_1</item>
+        <item>@string/led_sos_2</item>
+        <item>@string/led_sos_3</item>
+    </string-array>
+    <string-array name="led_bean_list">
+        <item>@string/led_bean_0</item>
+		<item>@string/led_bean_1</item>
+		<item>@string/led_bean_2</item>
+		<item>@string/led_bean_3</item>
+		<item>@string/led_bean_4</item>
+		<item>@string/led_bean_5</item>
+		<item>@string/led_bean_6</item>
+		<item>@string/led_bean_7</item>
+		<item>@string/led_bean_8</item>
+		<item>@string/led_bean_9</item>
+		<item>@string/led_bean_10</item>
+		<item>@string/led_bean_11</item>
+		<item>@string/led_bean_12</item>
+		<item>@string/led_bean_13</item>
+		<item>@string/led_bean_14</item>
+		<item>@string/led_bean_15</item>
+		<item>@string/led_bean_16</item>
+		<item>@string/led_bean_17</item>
+		<item>@string/led_bean_18</item>
+		<item>@string/led_bean_19</item>
+		<item>@string/led_bean_20</item>
+		<item>@string/led_bean_21</item>
+		<item>@string/led_bean_22</item>
+		<item>@string/led_bean_23</item>
+		<item>@string/led_bean_24</item>
+		<item>@string/led_bean_25</item>
+		<item>@string/led_bean_26</item>
+    </string-array>
+
+    <integer-array name="led_gallery_list">
+        <item>@drawable/led_ico_android</item>
+        <item>@drawable/led_ico_happy</item>
+        <item>@drawable/led_ico_mail</item>
+        <item>@drawable/led_ico_heart</item>
+        <item>@drawable/led_ico_sos</item>
+        <item>@drawable/led_ico_beer</item>
+        <item>@drawable/led_ico_bean</item>
+    </integer-array>
+    <integer-array name="led_edit_gallery_list">
+        <item>@drawable/led_ico_android</item>
+        <item>@drawable/led_ico_happy</item>
+        <item>@drawable/led_ico_sad</item>
+        <item>@drawable/led_ico_heart</item>
+        <item>@drawable/led_ico_add</item>
+    </integer-array>
+
+</resources>

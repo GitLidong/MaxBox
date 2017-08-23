@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="270dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/lauout_mirror"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+            <Button
+                android:layout_marginLeft="24dp"
+                android:background="@drawable/ic_menu_mirror"
+                android:id="@+id/btn_mirror"
+                android:layout_width="72dp"
+                android:layout_height="72dp" />
+            <TextView
+                android:text="@string/menu7"
+                android:layout_marginLeft="40dp"
+                android:textColor="@color/colorGray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:id="@+id/lauout_magnifier"
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+            <Button
+                android:layout_marginLeft="24dp"
+                android:background="@drawable/ic_menu_magnifier"
+                android:id="@+id/btn_magnifier"
+                android:layout_width="72dp"
+                android:layout_height="72dp" />
+            <TextView
+                android:text="@string/menu8"
+                android:layout_marginLeft="40dp"
+                android:textColor="@color/colorGray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/lauout_scale"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+            <Button
+                android:layout_marginLeft="24dp"
+                android:background="@drawable/ic_menu_scale"
+                android:id="@+id/btn_scale"
+                android:layout_width="72dp"
+                android:layout_height="72dp" />
+            <TextView
+                android:text="@string/menu9"
+                android:layout_marginLeft="40dp"
+                android:textColor="@color/colorGray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:id="@+id/lauout_protractor"
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+            <Button
+                android:layout_marginLeft="24dp"
+                android:background="@drawable/ic_menu_protractor"
+                android:id="@+id/btn_protractor"
+                android:layout_width="72dp"
+                android:layout_height="72dp" />
+            <TextView
+                android:text="@string/menu10"
+                android:layout_marginLeft="40dp"
+                android:textColor="@color/colorGray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:id="@+id/lauout_unit"
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+            <Button
+                android:layout_marginLeft="24dp"
+                android:background="@drawable/ic_menu_unit"
+                android:id="@+id/btn_unit"
+                android:layout_width="72dp"
+                android:layout_height="72dp" />
+            <TextView
+                android:text="@string/menu11"
+                android:layout_marginLeft="40dp"
+                android:textColor="@color/colorGray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:id="@+id/lauout_size"
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+            <Button
+                android:layout_marginLeft="24dp"
+                android:background="@drawable/ic_menu_size"
+                android:id="@+id/btn_size"
+                android:layout_width="72dp"
+                android:layout_height="72dp" />
+            <TextView
+                android:text="@string/menu12"
+                android:layout_marginLeft="40dp"
+                android:textColor="@color/colorGray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

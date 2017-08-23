@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MaxBox</string>
+    <string name="menu1">Led</string>
+    <string name="menu2">二维码</string>
+    <string name="menu3">分贝仪</string>
+    <string name="menu4">水平仪</string>
+    <string name="menu5">指南针</string>
+    <string name="menu6">手电筒</string>
+    <string name="menu7">镜子</string>
+    <string name="menu8">放大镜</string>
+    <string name="menu9">刻度尺</string>
+    <string name="menu10">量角器</string>
+    <string name="menu11">单位换算</string>
+    <string name="menu12">尺码表</string>
+
+
+</resources>
