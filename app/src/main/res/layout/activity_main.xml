@@ -4,8 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="@drawable/main_bg"
     tools:context="com.lidong.maxbox.MainActivity">
+=======
+    tools:context="com.lidong.maxbox.MainActivity"
+    android:background="@drawable/main_bg">
+
+>>>>>>> 9f511bcd645fec1d196329b173186a6961a92fb4
 
     <android.support.v4.view.ViewPager
         android:layout_marginBottom="30dp"
