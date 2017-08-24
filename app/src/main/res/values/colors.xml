@@ -5,4 +5,18 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#F5F5F5</color>
     <color name="colorGray">#808080</color>
+    
+   <!-- 公共资源 -->
+   <color name="common_actionbar_title_text_color">#fff5f8f9</color>
+   <color name="blue">#ff3b9af1</color>
+   <color name="black">#ff000000</color>
+   <color name="gray">#bcbcbc</color>
+   
+   <!-- compass -->
+   <color name="compass_location_title_color">#ff46a0f2</color>
+   <color name="compass_direction_text_color">#ff3b9af1</color>
+   <color name="compass_longitude_latitude_text_color">#ff767676</color>
+   <color name="compass_angle_text_color">#ff46a0f2</color>
+   <color name="compass_direction_short_text_color">#ff46a0f2</color>
+   <color name="compass_actionbar_title_text_color">#ffffffff</color>
 </resources>

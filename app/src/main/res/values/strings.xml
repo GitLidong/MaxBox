@@ -12,6 +12,39 @@
     <string name="menu10">量角器</string>
     <string name="menu11">单位换算</string>
     <string name="menu12">尺码表</string>
-
+    <!-- compass -->
+    <string name="compass_title">Compass</string>
+    <string name="compass_north">North</string>
+    <string name="compass_east">East</string>
+    <string name="compass_south">South</string>
+    <string name="compass_west">West</string>
+    <string name="compass_northeast">Northeast</string>
+    <string name="compass_southeast">Southeast</string>
+    <string name="compass_northwest">Northwest</string>
+    <string name="compass_southwest">Southwest</string>
+    <string name="compass_north_short">n</string>
+    <string name="compass_east_short">e</string>
+    <string name="compass_south_short">s</string>
+    <string name="compass_west_short">w</string>
+    <string name="compass_northeast_short">ne</string>
+    <string name="compass_southeast_short">se</string>
+    <string name="compass_northwest_short">nw</string>
+    <string name="compass_southwest_short">sw</string>
+    <string name="compass_cannot_get_location">Cannot get your location</string>
+    <string name="compass_cannot_get_sensor">Cannot get any sensor</string>
+    <string name="compass_exit_toast">Click again exit to application</string>
+    <string name="compass_text_exit">Exit</string>
+    <string name="compass_text_calibration">About calibration</string>
+    <string name="compass_text_calibration_title">Calibration</string>
+    <string name="compass_text_calibration_help">to calibrate,please move phone along \'8\' route with its front face up and towards yourself respectively</string>
+    <string name="compass_text_ok">Ok</string>
+    <string name="compass_north_latitude">North latitude</string>
+    <string name="compass_east_longitude">East longitude</string>
+    <string name="compass_degree">°</string>
+    <string name="compass_minute">\'</string>
+    <string name="compass_second">\'\'</string>
+    <string name="compass_error">err</string>
+    <string name="compass_isfirst_use">iscompassfirstopen</string>
+    <string name="compass_click_note">please click \'8\' button</string>
 
 </resources>

@@ -1,0 +1,78 @@
+<resources>
+
+    <!-- 公共资源 -->
+    <dimen name="common_actionbar_btn_margintop">10dp</dimen>
+    <dimen name="common_actionbar_btn_marginleft">15dp</dimen>
+    <dimen name="common_actionbar_layout_height">38dp</dimen>
+    <dimen name="common_actionbar_back_width">39dp</dimen>
+    <dimen name="common_actionbar_back_height">39dp</dimen>
+    <dimen name="common_actionbar_title_text_size">25sp</dimen>
+    <dimen name="common_actionbar_height">57dp</dimen>
+    <!-- size tool content -->
+    <dimen name="size_tool_listview_height">50dip</dimen>
+    <dimen name="size_tool_listview_border">1dip</dimen>
+    <dimen name="size_tool_listview_textsize">6pt</dimen>
+    <dimen name="size_tool_listview_jeans_textsize">10pt</dimen>
+    <dimen name="size_tool_listview_jeans_height">50dip</dimen>
+    <dimen name="size_tool_button_layout_height">55dip</dimen>
+    <dimen name="size_tool_button_layout_padding_leftandright">15dip</dimen>
+    <dimen name="size_tool_button_margin">0dip</dimen>
+    <dimen name="size_tool_button_up_border_height">15dip</dimen>
+
+    <!-- Maxbox首页配置 -->
+    <dimen name="maxbox_levelcontrol_padding">31dp</dimen>
+    <dimen name="maxbox_radio_size">6dp</dimen>
+    <dimen name="maxbox_radio_paddingtop">13dp</dimen>
+    <dimen name="maxbox_gv_item_view_height">70dp</dimen>
+    <!-- 镜子及放大镜页面配置 -->
+    <dimen name="magnifier_trimview_margin">20dp</dimen>
+    <dimen name="magnifier_seekbar_margin">8dp</dimen>
+    <dimen name="magnifier_operation_margin">20dp</dimen>
+    <dimen name="mirror_preview_margin">25dp</dimen>
+    <dimen name="mirror_preview">55dp</dimen>
+
+    <!-- compass -->
+    <dimen name="compass_direction_text_marginTop">78dp</dimen>
+    <dimen name="compass_latitude_layout_marginBottom">50dp</dimen>
+    <dimen name="compass_latitude_layout_marginLeft">30dp</dimen>
+    <dimen name="compass_longitude_layout_marginBottom">50dp</dimen>
+    <dimen name="compass_longitude_layout_marginRight">30dp</dimen>
+    <dimen name="compass_angle_text_size">20sp</dimen>
+    <dimen name="compass_directionshort_text_size">11sp</dimen>
+    <dimen name="compass_direction_text_size">25sp</dimen>
+    <dimen name="compass_latitude_text_size">18sp</dimen>
+    <dimen name="compass_location_To_CompassHeight">20dip</dimen>
+    <dimen name="compass_numToCompassHeight">20dip</dimen>
+    <dimen name="compass_textTopPadding">20dip</dimen>
+    <dimen name="compass_textLeftPadding">40dip</dimen>
+    <dimen name="compass_textRightPadding">40dip</dimen>
+
+    <!-- QRCode -->
+    <dimen name="camera_scanner_paddingtop">70dp</dimen>
+    <dimen name="camera_scanner_marginbottom">30dp</dimen>
+        <dimen name="camera_encode_marginbottom">28dp</dimen>
+    <dimen name="qrcode_result_layout_height">1px</dimen>
+    <dimen name="qrcode_result_margin">30dp</dimen>
+    <!-- add QRCode -->
+    <dimen name="titleBarHeight">45dp</dimen>
+    <dimen name="parsed_result_bottom_padding">36dp</dimen>
+    <dimen name="parsed_result_left_padding">16dp</dimen>
+    <dimen name="parsed_result_right_padding">16dp</dimen>
+    <dimen name="parsed_result_top_padding">18dp</dimen>
+    <dimen name="bottomBarHeight">60dp</dimen>
+    <dimen name="decodeListViewPadding">5dp</dimen>
+    <dimen name="encodeListViewTextLeftPadding">4dp</dimen>
+    <dimen name="encodeListViewTextTopPadding">2dp</dimen>
+    <dimen name="encodeListViewButtonHeight">47dp</dimen>
+    <dimen name="encodeListViewTextBottomPadding">2dp</dimen>
+   <dimen name="iv_type_list_item_width">23dp</dimen>
+   <dimen name="iv_type_list_item_marginleft">22dp</dimen>
+   <dimen name="iv_activity_encode_result_width">170dp</dimen>
+   <dimen name="iv_activity_encode_result_margintop">64dp</dimen>
+   <dimen name="view_encode_save_item_margintop">9dp</dimen>
+   <dimen name="tv_encode_save_item_height">35dp</dimen>
+   <dimen name="encode_save_item_width">90dp</dimen>
+   <dimen name="iv_activity_encode_save_item_width">130dp</dimen>
+   <dimen name="liner_encode_save_item_width">330dp</dimen>
+   <dimen name="ev_encode_input_width">0dp</dimen>
+</resources>
