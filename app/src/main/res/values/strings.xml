@@ -13,6 +13,10 @@
     <string name="menu11">单位换算</string>
     <string name="menu12">尺码表</string>
     <!-- compass -->
+    <string name="location_north">%s N</string>
+    <string name="location_south">%s S</string>
+    <string name="location_east">%s E</string>
+    <string name="location_west">%s W</string>
     <string name="compass_title">Compass</string>
     <string name="compass_north">North</string>
     <string name="compass_east">East</string>
@@ -46,5 +50,4 @@
     <string name="compass_error">err</string>
     <string name="compass_isfirst_use">iscompassfirstopen</string>
     <string name="compass_click_note">please click \'8\' button</string>
-
 </resources>

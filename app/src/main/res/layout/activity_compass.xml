@@ -52,19 +52,44 @@
             android:scaleType="center"
             android:src="@drawable/background_compass" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:scaleType="center"
-            android:src="@drawable/compass_point" />
-
         <com.lidong.maxbox.views.CompassView
             android:id="@+id/compassPointer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/compass_first_use_style"/>
+            android:src="@drawable/compass_point"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/angle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/compass_angle_text_size"
+                android:textColor="@color/compass_angle_text_color"
+                android:text="257"/>
+
+            <TextView
+                android:layout_gravity="center"
+                android:id="@+id/direction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/compass_directionshort_text_size"
+                android:textColor="@color/compass_direction_short_text_color" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/compass_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="center"
+            android:src="@drawable/compass_first_use_style" />
     </FrameLayout>
 
     <TextView
