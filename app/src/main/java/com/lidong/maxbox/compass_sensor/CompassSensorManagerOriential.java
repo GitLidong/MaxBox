@@ -7,6 +7,8 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.widget.Toast;
 
+import com.lidong.maxbox.R;
+
 public class CompassSensorManagerOriential extends CompassSensorManager {
 
 	
@@ -42,7 +44,7 @@ public class CompassSensorManagerOriential extends CompassSensorManager {
 			mSensorManager.registerListener(mSensorEventListener,
 					mOrientationSensor, SensorManager.SENSOR_DELAY_GAME);
 		} else {
-			Toast.makeText(mActivity, "KKKKKKKKKK", Toast.LENGTH_SHORT)
+			Toast.makeText(mActivity, R.string.compass_cannot_get_sensor, Toast.LENGTH_SHORT)
 					.show();
 		}
 	}

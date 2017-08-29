@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -17,6 +18,7 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
@@ -62,6 +64,7 @@ public class CompassMainActivity extends Activity implements View.OnClickListene
     private long firstExitTime = 0L;
     private boolean isNull = false;
     private TextView locationTextView;
+    private SharedPreferences preferences;
 
     protected Runnable mCompassViewUpdater = new Runnable() {
         @Override
@@ -103,6 +106,15 @@ public class CompassMainActivity extends Activity implements View.OnClickListene
         setContentView(R.layout.activity_compass);
         init();
         initServices();
+        preferences = getSharedPreferences("count",MODE_PRIVATE);
+        int counts = preferences.getInt("count",0);
+        if(counts > 0) {
+            compass_first.setImageDrawable(null);
+            isNull = true;
+        }
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("count",++counts);
+        editor.commit();
     }
 
     private void init() {
