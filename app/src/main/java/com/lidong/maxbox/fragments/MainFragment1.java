@@ -36,7 +36,8 @@ public class MainFragment1 extends Fragment implements View.OnClickListener,
         layout_led.setOnClickListener((View.OnClickListener) this);
         layout_led.setOnTouchListener(this);
         layout_compass.setOnTouchListener(this);
-	layout_level.setOnClickListener(this);
+	    layout_level.setOnClickListener(this);
+        layout_level.setOnClickListener(this);
 
         return view;
     }
