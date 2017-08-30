@@ -15,8 +15,8 @@ import android.widget.LinearLayout;
 import com.lidong.maxbox.R;
 import com.lidong.maxbox.activity.CompassMainActivity;
 import com.lidong.maxbox.activity.LedActivity;
-
-
+import com.lidong.maxbox.activity.LevelActivity;
+import java.util.logging.Level;
 /**
  * Created by ubuntu on 17-8-22.
  */
@@ -31,10 +31,12 @@ public class MainFragment1 extends Fragment implements View.OnClickListener,
         Button btn_led = (Button) view.findViewById(R.id.btn_led);
         LinearLayout layout_led = (LinearLayout) view.findViewById(R.id.lauout_led);
         LinearLayout layout_compass = (LinearLayout) view.findViewById(R.id.lauout_compass);
+	LinearLayout layout_level=(LinearLayout)view.findViewById(R.id.lauout_level);
         layout_compass.setOnClickListener((View.OnClickListener) this);
         layout_led.setOnClickListener((View.OnClickListener) this);
         layout_led.setOnTouchListener(this);
         layout_compass.setOnTouchListener(this);
+	layout_level.setOnClickListener(this);
 
         return view;
     }
@@ -49,6 +51,10 @@ public class MainFragment1 extends Fragment implements View.OnClickListener,
             case R.id.lauout_led:
                 Intent intent2 = new Intent(getActivity(), LedActivity.class);
                 startActivity(intent2);
+                break;
+            case R.id.lauout_level:
+                Intent intent3 = new Intent(getActivity(), LevelActivity.class);
+                startActivity(intent3);
                 break;
         }
     }

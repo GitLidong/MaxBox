@@ -22,6 +22,9 @@
         </activity>
         <activity android:name=".activity.LedActivity"></activity>
         <activity android:name=".activity.CompassMainActivity"></activity>
+        <activity android:name=".activity.LedActivity" />
+        <activity android:name=".activity.CompassMainActivity" />
+        <activity android:name=".activity.LevelActivity"></activity>
     </application>
 
 </manifest>

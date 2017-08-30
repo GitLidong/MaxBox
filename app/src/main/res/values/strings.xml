@@ -12,6 +12,9 @@
     <string name="menu10">量角器</string>
     <string name="menu11">单位换算</string>
     <string name="menu12">尺码表</string>
+    <string name="level_title">水平仪</string>
+    <string name="vertical">垂直</string>
+    <string name="horizontal">水平</string>
     <!-- compass -->
     <string name="location_north">%s N</string>
     <string name="location_south">%s S</string>
