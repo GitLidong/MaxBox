@@ -92,6 +92,9 @@ public class MyToolsMenuAdapter extends RecyclerView.Adapter<MyToolsMenuAdapter.
                     case MotionEvent.ACTION_UP:
                         v.setBackgroundResource(0);
                         break;
+                    default:
+                        v.setBackgroundResource(0);
+                        break;
                 }
                 return false;
             }
