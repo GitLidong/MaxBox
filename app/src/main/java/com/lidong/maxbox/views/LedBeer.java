@@ -236,8 +236,8 @@ public class LedBeer extends SurfaceView implements SurfaceHolder.Callback,Runna
 
     private void drawBeer2(Canvas canvas){
         initXY();
-        canvas.drawCircle(x , y , 12, paintWhite);
-        canvas.drawCircle(x , y , 24, paintRed);
+        canvas.drawCircle(x , y , POINT_RADIUS, paintWhite);
+        canvas.drawCircle(x , y , POINT_RADIUS, paintRed);
         canvas.drawCircle(x +POINT_DISTANCE*9, y , POINT_RADIUS, paintWhite);
         canvas.drawCircle(x +POINT_DISTANCE*9, y , POINT_RADIUS, paintRed);
 
