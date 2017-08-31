@@ -1,16 +1,30 @@
 package com.lidong.maxbox.activity;
 
-import android.graphics.BitmapFactory;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+
 
 import com.lidong.maxbox.R;
 import com.lidong.maxbox.adapter.MyLedAdapter;
-import com.lidong.maxbox.myinterface.ViewCallback;
+import com.lidong.maxbox.manager.CenterLayoutManager;
+import com.lidong.maxbox.manager.FragmentFactory;
+import com.lidong.maxbox.myinterface.LedCallback;
+import com.lidong.maxbox.views.LedAndroid;
+import com.lidong.maxbox.views.LedBean;
+import com.lidong.maxbox.views.LedBeer;
+import com.lidong.maxbox.views.LedHappy;
+import com.lidong.maxbox.views.LedHeart;
+import com.lidong.maxbox.views.LedMail;
+import com.lidong.maxbox.views.LedSos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +34,12 @@ public class LedActivity extends AppCompatActivity {
     private List<Integer> listBitmapIDs;
     private RecyclerView led_recycleview;
     private MyLedAdapter myLedAdapter;
-    private ImageView led_image;
+    private LinearLayoutManager layoutManager;
+
+    private Fragment myFragment;
+
+    private FrameLayout frame_layout;
+    private int frame_layout_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +49,8 @@ public class LedActivity extends AppCompatActivity {
     }
 
     private void init(){
-        led_image = (ImageView) findViewById(R.id.led_image);
 
         listBitmapIDs = new ArrayList<>();
-        listBitmapIDs.add(0);
-
         listBitmapIDs.add(R.drawable.led_ico_android);
         listBitmapIDs.add(R.drawable.led_ico_happy);
         listBitmapIDs.add(R.drawable.led_ico_mail);
@@ -42,30 +58,60 @@ public class LedActivity extends AppCompatActivity {
         listBitmapIDs.add(R.drawable.led_ico_sos);
         listBitmapIDs.add(R.drawable.led_ico_beer);
         listBitmapIDs.add(R.drawable.led_ico_bean);
-        listBitmapIDs.add(0);
-
 
         led_recycleview = (RecyclerView) findViewById(R.id.led_recycleview);
 
-        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
+        layoutManager=new CenterLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         led_recycleview.setLayoutManager(layoutManager);
 
-        myLedAdapter = new MyLedAdapter(listBitmapIDs,viewCallback);
+        myLedAdapter = new MyLedAdapter(listBitmapIDs,ledCallback);
         led_recycleview.setAdapter(myLedAdapter);
+
+        frame_layout_id = R.id.frame_layout;
+        frame_layout = (FrameLayout) findViewById(frame_layout_id);
+        frame_layout.setOnClickListener(onClick);
+
+        switchFragments(0);
 
     }
 
-    private ViewCallback viewCallback = new ViewCallback() {
+    private LedCallback ledCallback = new LedCallback() {
         @Override
-        public void setPostion(int start,int end) {
-            Log.i("lidong","position "+(end-start));
+        public void setPostion(int position) {
+            layoutManager.smoothScrollToPosition(led_recycleview,null,position);
         }
 
         @Override
         public void setView(int position) {
-            //led_image.setImageBitmap(BitmapFactory.decodeResource(getResources(),listBitmapIDs.get(position)));
+            switchFragments(position);
+        }
 
+    };
+
+    private View.OnClickListener onClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(v.getId() == R.id.led_recycleview) {
+
+            }else{
+                if(led_recycleview.getVisibility() == View.VISIBLE){
+                    led_recycleview.setVisibility(View.INVISIBLE);
+                }else {
+                    led_recycleview.setVisibility(View.VISIBLE);
+                }
+            }
         }
     };
+
+    private void switchFragments(int position){
+        FragmentManager fragmentManager= getSupportFragmentManager();  //获得Fragment管理器
+        FragmentTransaction transaction = fragmentManager.beginTransaction(); //开启一个事务
+
+        myFragment = new FragmentFactory(position);
+
+        transaction.replace(frame_layout_id,myFragment);
+        transaction.commit();
+    }
+
 }
