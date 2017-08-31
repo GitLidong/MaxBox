@@ -69,15 +69,16 @@ public class MyToolsMenuAdapter extends RecyclerView.Adapter<MyToolsMenuAdapter.
             @Override
             public void onClick(View v) {
                 Log.i("MyToolsMenuAdapter","menu position :" +whichMenu+" "+position);
-                toolsClickCallback.ToolsClick(whichMenu,position);
+                toolsClickCallback.switchActivity(whichMenu,position);
             }
         };
 
         private View.OnLongClickListener onLongClick = new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                toolsClickCallback.ToolsLongClick( whichMenu==0? mMenuOneItemNames[position]:mMenuTwoItemNames[position]);
-                return true;//return true消耗了事件，不会继续传递
+                toolsClickCallback.makeShortcut( whichMenu==0? mMenuOneItemNames[position]:mMenuTwoItemNames[position]);
+                //return true消耗了事件，不会继续传递
+                return true;
             }
         };
 
@@ -89,7 +90,7 @@ public class MyToolsMenuAdapter extends RecyclerView.Adapter<MyToolsMenuAdapter.
                         v.setBackgroundColor(Color.parseColor("#FFC125"));
                         break;
                     case MotionEvent.ACTION_UP:
-                        v.setBackgroundColor(Color.WHITE);
+                        v.setBackgroundResource(0);
                         break;
                 }
                 return false;

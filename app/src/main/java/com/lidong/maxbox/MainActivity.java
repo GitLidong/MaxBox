@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ToolsClickCallback toolsClickCallback = new ToolsClickCallback() {
         @Override
-        public void ToolsClick(int whichMenu, int position) {
+        public void switchActivity(int whichMenu, int position) {
             Activity activity = ActivityFactory.createActivityByMenuAndPosition(whichMenu,position);
             if(activity != null){
                 Intent intent = new Intent(MainActivity.this,activity.getClass());
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void ToolsLongClick(String name) {
+        public void makeShortcut(String name) {
             String toast = name + getApplicationContext().getString(R.string.long_click_toast);
             Toast.makeText(getApplicationContext(),toast,Toast.LENGTH_SHORT).show();
         }
