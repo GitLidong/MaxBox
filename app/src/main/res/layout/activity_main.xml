@@ -6,7 +6,7 @@
     android:background="@drawable/main_bg"
     tools:context="com.lidong.maxbox.MainActivity">
     <android.support.v4.view.ViewPager
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="30dp"
         android:id="@+id/main_viewpager"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"

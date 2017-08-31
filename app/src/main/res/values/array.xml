@@ -1,0 +1,22 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string-array name="menu_one">
+        <item>@string/menu1</item>
+        <item>@string/menu2</item>
+        <item>@string/menu3</item>
+        <item>@string/menu4</item>
+        <item>@string/menu5</item>
+        <item>@string/menu6</item>
+    </string-array>
+
+    <string-array name="menu_two">
+        <item>@string/menu7</item>
+        <item>@string/menu8</item>
+        <item>@string/menu9</item>
+        <item>@string/menu10</item>
+        <item>@string/menu11</item>
+        <item>@string/menu12</item>
+    </string-array>
+
+
+</resources>

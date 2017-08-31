@@ -1,17 +1,18 @@
 package com.lidong.maxbox;
 
-import android.content.Context;
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.WindowManager;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.lidong.maxbox.adapter.MyMainFragmentAdapter;
-import com.lidong.maxbox.fragments.MainFragment1;
-import com.lidong.maxbox.fragments.MainFragment2;
+import com.lidong.maxbox.fragments.MainFragment;
+import com.lidong.maxbox.manager.ActivityFactory;
+import com.lidong.maxbox.myinterface.ToolsClickCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,23 +20,18 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private ViewPager main_viewpager;
+
     private List<Fragment> listFragments;
-    private MyMainFragmentAdapter myAdapter;
+
+    private MyMainFragmentAdapter myMainFragmentAdapterAdapter;
+
     private RadioButton main_radio1,main_radio2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //getSize();
         init();
-
-    }
-
-    private void getSize(){
-        WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
-        Log.i("MainActivity","W H"+wm.getDefaultDisplay().getWidth()+" "+wm.getDefaultDisplay().getHeight());
     }
 
     private void init(){
@@ -48,12 +44,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         listFragments = new ArrayList<>();
+        listFragments.add(new MainFragment(0,toolsClickCallback));
+        listFragments.add(new MainFragment(1,toolsClickCallback));
 
-        listFragments.add(new MainFragment1());
-        listFragments.add(new MainFragment2());
-
-        myAdapter = new MyMainFragmentAdapter(getSupportFragmentManager(),listFragments);
-        main_viewpager.setAdapter(myAdapter);
+        myMainFragmentAdapterAdapter = new MyMainFragmentAdapter(getSupportFragmentManager(),listFragments);
+        main_viewpager.setAdapter(myMainFragmentAdapterAdapter);
     }
 
     private ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
@@ -81,6 +76,26 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onPageScrollStateChanged(int state) {
 
+        }
+    };
+
+    private ToolsClickCallback toolsClickCallback = new ToolsClickCallback() {
+        @Override
+        public void ToolsClick(int whichMenu, int position) {
+            Activity activity = ActivityFactory.createActivityByMenuAndPosition(whichMenu,position);
+            if(activity != null){
+                Intent intent = new Intent(MainActivity.this,activity.getClass());
+                startActivity(intent);
+            }
+            else{
+                Toast.makeText(getApplicationContext(),"activity尚未创建",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        @Override
+        public void ToolsLongClick(String name) {
+            String toast = name + getApplicationContext().getString(R.string.long_click_toast);
+            Toast.makeText(getApplicationContext(),toast,Toast.LENGTH_SHORT).show();
         }
     };
 }
