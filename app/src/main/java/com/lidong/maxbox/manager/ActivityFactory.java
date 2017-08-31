@@ -12,10 +12,10 @@ import com.lidong.maxbox.activity.LevelActivity;
 
 public class ActivityFactory {
 
-    public static Activity createActivityByMenuAndPosition(int whichMenu,int posiiton){
+    public static Activity createActivityByMenuAndPosition(int whichMenu,int position){
         Activity activity = null;
         if (whichMenu == 0) {
-            switch (posiiton) {
+            switch (position) {
                 case 0:
                     activity = new LedActivity();
                     break;
@@ -36,9 +36,8 @@ public class ActivityFactory {
             }
         }
         else if(whichMenu ==1) {
-            switch (posiiton) {
+            switch (position) {
                 case 0:
-                    activity = new LedActivity();
                     break;
                 case 1:
                     break;
