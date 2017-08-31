@@ -7,10 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
 
 import com.lidong.maxbox.R;
@@ -18,13 +16,6 @@ import com.lidong.maxbox.adapter.MyLedAdapter;
 import com.lidong.maxbox.manager.CenterLayoutManager;
 import com.lidong.maxbox.manager.FragmentFactory;
 import com.lidong.maxbox.myinterface.LedCallback;
-import com.lidong.maxbox.views.LedAndroid;
-import com.lidong.maxbox.views.LedBean;
-import com.lidong.maxbox.views.LedBeer;
-import com.lidong.maxbox.views.LedHappy;
-import com.lidong.maxbox.views.LedHeart;
-import com.lidong.maxbox.views.LedMail;
-import com.lidong.maxbox.views.LedSos;
 
 import java.util.ArrayList;
 import java.util.List;

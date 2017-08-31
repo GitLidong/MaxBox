@@ -65,10 +65,8 @@ public class MainFragment1 extends Fragment implements View.OnClickListener,
         switch (motionEvent.getAction()){
             case MotionEvent.ACTION_DOWN:
                 view.setBackgroundColor(Color.parseColor("#FFC125"));
-                break;
             case MotionEvent.ACTION_UP:
                 view.setBackgroundColor(Color.parseColor("#FF8C00"));
-                break;
         }
         return false;
     }
