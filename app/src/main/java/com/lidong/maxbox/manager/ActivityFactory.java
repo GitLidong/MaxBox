@@ -5,6 +5,7 @@ import android.app.Activity;
 import com.lidong.maxbox.activity.CompassMainActivity;
 import com.lidong.maxbox.activity.LedActivity;
 import com.lidong.maxbox.activity.LevelActivity;
+import com.lidong.maxbox.activity.MagnifierActivity;
 
 /**
  * Created by ubuntu on 17-8-31.
@@ -40,6 +41,7 @@ public class ActivityFactory {
                 case 0:
                     break;
                 case 1:
+                    activity=new MagnifierActivity();
                     break;
                 case 2:
                     break;

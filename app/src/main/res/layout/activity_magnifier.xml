@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context="com.lidong.maxbox.activity.MagnifierActivity">
+
+    <FrameLayout
+        android:id="@+id/magnifier_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+        <SurfaceView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:id="@+id/magnifier_camerapreview">
+        </SurfaceView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="20dp">
+
+            <RelativeLayout
+                android:id="@+id/magnifier_layout_trim"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <SeekBar
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/magnifier_seekbar"
+                    android:layout_centerInParent="true"
+                    android:thumb="@drawable/magnifier_scal_ctrl">
+                </SeekBar>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/magnifier_scal_small"
+                    android:layout_toLeftOf="@id/magnifier_seekbar"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/magnifier_scal_big"
+                    android:layout_toRightOf="@id/magnifier_seekbar"/>
+
+            </RelativeLayout>
+
+            <ImageButton
+                android:id="@+id/magnifier_iview_operation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/magn_light_selector"
+                android:layout_gravity="center_horizontal">
+            </ImageButton>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>
