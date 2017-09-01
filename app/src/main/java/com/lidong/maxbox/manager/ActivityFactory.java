@@ -6,7 +6,6 @@ import com.lidong.maxbox.activity.CompassMainActivity;
 import com.lidong.maxbox.activity.LedActivity;
 import com.lidong.maxbox.activity.LevelActivity;
 import com.lidong.maxbox.activity.MagnifierActivity;
-import com.lidong.maxbox.activity.MirrorActivity;
 import com.lidong.maxbox.activity.SoundMetelActivity;
 
 /**
@@ -42,7 +41,6 @@ public class ActivityFactory {
         else if(whichMenu ==1) {
             switch (position) {
                 case 0:
-                    activity = new MirrorActivity();
                     break;
                 case 1:
                     activity=new MagnifierActivity();

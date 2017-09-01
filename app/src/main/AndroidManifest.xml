@@ -35,8 +35,6 @@
         <activity android:name=".activity.LevelActivity" />
         <activity android:name=".activity.MagnifierActivity" />
         <activity android:name=".activity.SoundMetelActivity"></activity>
-        <activity android:name=".activity.MirrorActivity"
-            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
