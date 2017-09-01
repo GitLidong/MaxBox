@@ -18,5 +18,28 @@
         <item>@string/menu12</item>
     </string-array>
 
+    <string-array name="decibelstr">
+        <item>10dB</item>
+        <item>20dB</item>
+        <item>30dB</item>
+        <item>40dB</item>
+        <item>50dB</item>
+        <item>60dB</item>
+        <item>70dB</item>
+        <item>80dB</item>
+        <item>90dB</item>
+    </string-array>
+
+    <string-array name="decibelInfo">
+        <item>@string/decibelinfo10</item>
+        <item>@string/decibelinfo20</item>
+        <item>@string/decibelinfo30</item>
+        <item>@string/decibelinfo40</item>
+        <item>@string/decibelinfo50</item>
+        <item>@string/decibelinfo60</item>
+        <item>@string/decibelinfo70</item>
+        <item>@string/decibelinfo80</item>
+        <item>@string/decibelinfo90</item>
+    </string-array>
 
 </resources>

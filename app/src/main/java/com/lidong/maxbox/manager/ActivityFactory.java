@@ -6,6 +6,7 @@ import com.lidong.maxbox.activity.CompassMainActivity;
 import com.lidong.maxbox.activity.LedActivity;
 import com.lidong.maxbox.activity.LevelActivity;
 import com.lidong.maxbox.activity.MagnifierActivity;
+import com.lidong.maxbox.activity.SoundMetelActivity;
 
 /**
  * Created by ubuntu on 17-8-31.
@@ -23,6 +24,7 @@ public class ActivityFactory {
                 case 1:
                     break;
                 case 2:
+                    activity = new SoundMetelActivity();
                     break;
                 case 3:
                     activity = new LevelActivity();

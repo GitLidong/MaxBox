@@ -54,4 +54,15 @@
     <string name="compass_isfirst_use">iscompassfirstopen</string>
     <string name="compass_click_note">please click \'8\' button</string>
     <string name="long_click_toast">" shortcut is created!"</string>
+    <string name="sound_metel_title">SoundMetel</string>
+
+    <string name="decibelinfo10">Sound of breathing</string>
+    <string name="decibelinfo20">Leaves rustling sound</string>
+    <string name="decibelinfo30">Whispering talks</string>
+    <string name="decibelinfo40">Quiet residential area</string>
+    <string name="decibelinfo50">Outdoor Air-conditioning Fan</string>
+    <string name="decibelinfo60">Usual conversation</string>
+    <string name="decibelinfo70">Vacuum cleaner</string>
+    <string name="decibelinfo80">Playing piano</string>
+    <string name="decibelinfo90">"Dog's barking noise"</string>
 </resources>
