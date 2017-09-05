@@ -1,4 +1,4 @@
-package com.lidong.maxbox.util;
+package com.lidong.maxbox.views;
 
 import android.content.Context;
 import android.hardware.camera2.CameraAccessException;

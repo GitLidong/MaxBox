@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context="com.lidong.maxbox.activity.FlashlightActivity">
 
-    <com.lidong.maxbox.util.Flashlight
+    <com.lidong.maxbox.views.Flashlight
         android:id="@+id/flashlight"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

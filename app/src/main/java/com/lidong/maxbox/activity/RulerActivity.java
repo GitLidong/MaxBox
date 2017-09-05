@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
@@ -16,9 +14,6 @@ import android.widget.TextView;
 import com.lidong.maxbox.R;
 import com.lidong.maxbox.myinterface.RulerSizeCallback;
 import com.lidong.maxbox.views.GuideLine;
-import com.lidong.maxbox.views.RulerView;
-
-import org.w3c.dom.Text;
 
 public class RulerActivity extends AppCompatActivity{
 
