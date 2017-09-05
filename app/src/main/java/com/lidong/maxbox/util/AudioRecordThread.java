@@ -77,7 +77,7 @@ public class AudioRecordThread implements Runnable{
 
     public void startAudioRecordThread() {
         isRunning = true;
-        Log.i(TAG,"AudioRecordThread startAudioRecordThread now function !!!!");
+        Log.i(TAG,"AudioRecordThread 初始化数据，准备进入 run() !!!!");
         mAudioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC,
                 SAMPLE_RATE_IN_HZ, AudioFormat.CHANNEL_IN_DEFAULT,
                 AudioFormat.ENCODING_PCM_16BIT, BUFFER_SIZE);
@@ -87,6 +87,7 @@ public class AudioRecordThread implements Runnable{
     }
 
     public void stopAudioRecordThread() {
+        Log.i(TAG,"AudioRecordThread 更新run状态，准备退出 run() !!!!");
         isRunning = false;
     }
 }

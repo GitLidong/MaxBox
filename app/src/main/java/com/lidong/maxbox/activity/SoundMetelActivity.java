@@ -128,6 +128,7 @@ public class SoundMetelActivity extends AppCompatActivity {
                     Bundle bundle = msg.getData();
                     volume = (int) bundle.get("final_volume");
                     sound_level_show.setText(volume+"");
+                    //90dB对应180度，那么每分贝对应旋转2度。
                     nowAngle = volume * 2;
                     rotateAnimation = new RotateAnimation(
                             lastAngle,nowAngle,

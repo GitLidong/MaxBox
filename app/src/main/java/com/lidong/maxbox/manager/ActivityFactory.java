@@ -7,6 +7,7 @@ import com.lidong.maxbox.activity.LedActivity;
 import com.lidong.maxbox.activity.LevelActivity;
 import com.lidong.maxbox.activity.MagnifierActivity;
 import com.lidong.maxbox.activity.MirrorActivity;
+import com.lidong.maxbox.activity.RulerActivity;
 import com.lidong.maxbox.activity.SoundMetelActivity;
 
 /**
@@ -48,6 +49,7 @@ public class ActivityFactory {
                     activity=new MagnifierActivity();
                     break;
                 case 2:
+                    activity = new RulerActivity();
                     break;
                 case 3:
                     break;
