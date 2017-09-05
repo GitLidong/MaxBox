@@ -64,12 +64,6 @@ public class GuideLine extends View{
         initData();
     }
 
-    public GuideLine(Context context, RulerSizeCallback rulerSizeCallback) {
-        super(context);
-        initData();
-        this.rulerSizeCallback = rulerSizeCallback;
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -116,5 +110,9 @@ public class GuideLine extends View{
         rulerSizeCallback.setRuleSizeInch(inch);
         invalidate();
         return true;
+    }
+
+    public void setOnSizeCallback (RulerSizeCallback rulerSizeCallback) {
+        this.rulerSizeCallback = rulerSizeCallback;
     }
 }

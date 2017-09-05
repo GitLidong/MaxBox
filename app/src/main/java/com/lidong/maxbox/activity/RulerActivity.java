@@ -19,8 +19,6 @@ public class RulerActivity extends AppCompatActivity{
 
     private String TAG = "RulerActivity";
 
-    private RelativeLayout ruler_back;
-    private RelativeLayout.LayoutParams layoutParams;
     private GuideLine guideLine;
 
     private TextView rule_size_cm;
@@ -64,11 +62,9 @@ public class RulerActivity extends AppCompatActivity{
         rule_size_inch = (TextView) findViewById(R.id.rule_size_inch);
         rule_size_inch.setRotation(90);
 
-        ruler_back = (RelativeLayout) findViewById(R.id.ruler_back);
-        guideLine = new GuideLine(this,sizeCallback);
-        layoutParams=new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        ruler_back.addView(guideLine,layoutParams);
+        guideLine = (GuideLine) findViewById(R.id.rule_guide_line);
+        guideLine.setOnSizeCallback(sizeCallback);
+
     }
 
     private RulerSizeCallback sizeCallback = new RulerSizeCallback() {

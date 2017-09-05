@@ -34,4 +34,8 @@
         android:layout_centerHorizontal="true"
         android:layout_width="260dp"
         android:layout_height="match_parent" />
+    <com.lidong.maxbox.views.GuideLine
+        android:id="@+id/rule_guide_line"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>
