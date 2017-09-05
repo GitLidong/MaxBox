@@ -3,6 +3,7 @@ package com.lidong.maxbox.manager;
 import android.app.Activity;
 
 import com.lidong.maxbox.activity.CompassMainActivity;
+import com.lidong.maxbox.activity.FlashlightActivity;
 import com.lidong.maxbox.activity.LedActivity;
 import com.lidong.maxbox.activity.LevelActivity;
 import com.lidong.maxbox.activity.MagnifierActivity;
@@ -35,6 +36,7 @@ public class ActivityFactory {
                     activity = new CompassMainActivity();
                     break;
                 case 5:
+                    activity = new FlashlightActivity();
                     break;
                 default:
                     break;
