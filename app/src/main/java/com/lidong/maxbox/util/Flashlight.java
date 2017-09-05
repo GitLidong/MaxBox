@@ -86,9 +86,9 @@ public class Flashlight extends ViewGroup {
 
     public void setBackground(boolean state) {
         if (state) {
-            setBackgroundResource(R.drawable.flashlight_level0);
-        } else {
             setBackgroundResource(R.drawable.flashlight_level3);
+        } else {
+            setBackgroundResource(R.drawable.flashlight_level0);
         }
     }
 

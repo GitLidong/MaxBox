@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ruler_back"
     android:background="@color/colorWhite"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.lidong.maxbox.activity.RulerActivity">
     <ImageView
+        android:id="@+id/rule_back_image"
         android:layout_centerHorizontal="true"
         android:background="@drawable/tool_rulerbg"
         android:layout_width="260dp"
         android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/rule_size_cm"
+        android:layout_centerInParent="true"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/colorSteelBlue"
+        android:textSize="20sp"
+        android:text="15.00 cm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/rule_size_inch"
+        android:layout_centerInParent="true"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/colorSteelBlue"
+        android:textSize="20sp"
+        android:text="1.00 inch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <com.lidong.maxbox.views.RulerView
         android:layout_centerHorizontal="true"
         android:layout_width="260dp"
-        android:layout_height="match_parent" />
-    <com.lidong.maxbox.views.GuideLine
-        android:id="@+id/guide_line"
-        android:layout_centerHorizontal="true"
-        android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </RelativeLayout>

@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.lidong.maxbox.R;
+import com.lidong.maxbox.myinterface.RulerSizeCallback;
 
 /**
  * Created by ubuntu on 17-9-4.
@@ -25,8 +26,10 @@ public class GuideLine extends View{
     private float lineMinHeight;
     private float actionDownY;
 
-    private float bmLeft,bmRight;
+    private float bmLeft;
     private Bitmap bitmap;
+
+    private RulerSizeCallback rulerSizeCallback;
 
     private void initData() {
 
@@ -61,6 +64,12 @@ public class GuideLine extends View{
         initData();
     }
 
+    public GuideLine(Context context, RulerSizeCallback rulerSizeCallback) {
+        super(context);
+        initData();
+        this.rulerSizeCallback = rulerSizeCallback;
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -74,7 +83,6 @@ public class GuideLine extends View{
 
         lineWidth = w;
         bmLeft = lineWidth/2 - bitmap.getWidth()/2;
-        bmRight= lineWidth/2 +bitmap.getWidth()/2;
     }
 
     private void drawLine(Canvas canvas, float lineHeight) {
@@ -96,11 +104,16 @@ public class GuideLine extends View{
         float distanceToline1 = Math.abs(actionDownY - line1Height);
         float distanceToline2 = Math.abs(actionDownY - line2Height);
 
+        float cm = Math.abs(line1Height - line2Height);
+        float inch = Math.abs(line1Height - line2Height);
+
         if (distanceToline1 <= distanceToline2 ) {
             setLine1Height(actionDownY);
         } else {
             setLine2Height(actionDownY);
         }
+        rulerSizeCallback.setRulerSizeCm(cm);
+        rulerSizeCallback.setRuleSizeInch(inch);
         invalidate();
         return true;
     }
