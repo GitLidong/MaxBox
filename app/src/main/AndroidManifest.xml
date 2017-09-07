@@ -40,6 +40,7 @@
         <activity android:name=".activity.LedActivity" />
         <activity android:name=".activity.CompassMainActivity" />
         <activity android:name=".activity.LevelActivity" />
+        <activity android:name=".activity.ProtractorActivity"/>
         <activity android:name=".activity.MagnifierActivity" />
         <activity android:name=".activity.SoundMetelActivity" />
         <activity android:name=".activity.MirrorActivity" />
