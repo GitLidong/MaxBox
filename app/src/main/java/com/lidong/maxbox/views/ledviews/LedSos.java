@@ -1,4 +1,4 @@
-package com.lidong.maxbox.views;
+package com.lidong.maxbox.views.ledviews;
 
 import android.content.Context;
 import android.graphics.Canvas;

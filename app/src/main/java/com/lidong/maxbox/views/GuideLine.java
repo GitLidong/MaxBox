@@ -4,7 +4,10 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.PathEffect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -45,7 +48,7 @@ public class GuideLine extends View{
         paintGuide = new Paint();
         paintGuide.setAntiAlias(true);
         paintGuide.setColor(getResources().getColor(R.color.colorGuider));
-        paintGuide.setStyle(Paint.Style.FILL);
+        paintGuide.setStyle(Paint.Style.STROKE);
         paintGuide.setStrokeWidth(5);
     }
 
@@ -80,7 +83,13 @@ public class GuideLine extends View{
     }
 
     private void drawLine(Canvas canvas, float lineHeight) {
-        canvas.drawLine(0,lineHeight,lineWidth,lineHeight,paintGuide);
+        //绘制虚线代码
+        PathEffect effect=new DashPathEffect(new float[]{4,4,4,4},0);
+        Path path=new Path();
+        path.moveTo(0,lineHeight);
+        path.lineTo(lineWidth,lineHeight);
+        paintGuide.setPathEffect(effect);
+        canvas.drawPath(path,paintGuide);
         canvas.drawBitmap(bitmap,bmLeft,lineHeight-bitmap.getHeight()/2,new Paint());
     }
 

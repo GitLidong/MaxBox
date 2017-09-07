@@ -8,13 +8,13 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.lidong.maxbox.R;
-import com.lidong.maxbox.views.LedAndroid;
-import com.lidong.maxbox.views.LedBean;
-import com.lidong.maxbox.views.LedBeer;
-import com.lidong.maxbox.views.LedHappy;
-import com.lidong.maxbox.views.LedHeart;
-import com.lidong.maxbox.views.LedMail;
-import com.lidong.maxbox.views.LedSos;
+import com.lidong.maxbox.views.ledviews.LedAndroid;
+import com.lidong.maxbox.views.ledviews.LedBean;
+import com.lidong.maxbox.views.ledviews.LedBeer;
+import com.lidong.maxbox.views.ledviews.LedHappy;
+import com.lidong.maxbox.views.ledviews.LedHeart;
+import com.lidong.maxbox.views.ledviews.LedMail;
+import com.lidong.maxbox.views.ledviews.LedSos;
 
 /**
  * Created by ubuntu on 17-8-28.
