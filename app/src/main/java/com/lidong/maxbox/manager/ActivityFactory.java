@@ -10,6 +10,7 @@ import com.lidong.maxbox.activity.MagnifierActivity;
 import com.lidong.maxbox.activity.MirrorActivity;
 import com.lidong.maxbox.activity.ProtractorActivity;
 import com.lidong.maxbox.activity.RulerActivity;
+import com.lidong.maxbox.activity.SizeActivity;
 import com.lidong.maxbox.activity.SoundMetelActivity;
 
 /**
@@ -60,6 +61,7 @@ public class ActivityFactory {
                 case 4:
                     break;
                 case 5:
+                    activity = new SizeActivity();
                     break;
                 default:
                     break;

@@ -13,6 +13,14 @@
    <color name="blue">#ff3b9af1</color>
    <color name="black">#ff000000</color>
    <color name="gray">#bcbcbc</color>
+
+    <color name="size_tool_button_text_color">#ff7a7f88</color>
+    <color name="size_tool_title_text_color">#ff242527</color>
+    <color name="size_tool_title_layout_color">#fff1f2f4</color>
+    <color name="size_tool_list_text_color">#ff242424</color>
+    <color name="divide_gray_color">#ffCDB5CD</color>
+    <color name="size_bg">#EAEAEA</color>
+    <color name="jeans">#FF0000</color>
    
    <!-- compass -->
    <color name="compass_location_title_color">#ff46a0f2</color>

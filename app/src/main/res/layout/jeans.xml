@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/jeans"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="@color/colorWhite"
+        android:paddingTop="17dp"
+        android:textColor="@color/jeans"
+        android:text="@string/size_fragment_clothes_jeans"
+        android:textSize="12pt"/>
+    <include layout="@layout/jeans_size" />
+    <android.support.v7.widget.RecyclerView
+        android:layout_weight="9"
+        android:id="@+id/my_recycler_view2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>
