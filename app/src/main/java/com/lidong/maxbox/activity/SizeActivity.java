@@ -2,6 +2,7 @@ package com.lidong.maxbox.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -15,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TabHost;
 
+import com.lidong.maxbox.MainActivity;
 import com.lidong.maxbox.MyApplication;
 import com.lidong.maxbox.R;
 import com.lidong.maxbox.adapter.MySizeAdapter;
@@ -58,6 +60,7 @@ public class SizeActivity extends Activity implements TabHost.OnTabChangeListene
     private LinearLayout size_title;
     private LinearLayout jeans;
     private LinearLayout.LayoutParams params;
+    private Button back;
 
     private View mRoot,tabIndicator1,tabIndicator2,tabIndicator3,tabIndicator4,tabIndicator5;
     @Override
@@ -78,6 +81,9 @@ public class SizeActivity extends Activity implements TabHost.OnTabChangeListene
     }
 
     public void init() {
+
+        back = (Button) findViewById(R.id.back);
+        back.setOnClickListener(this);
         FullyLinearLayoutManager mLayoutManager = new FullyLinearLayoutManager(this);
         mLayoutManager.setSmoothScrollbarEnabled(true);
 
@@ -250,6 +256,10 @@ public class SizeActivity extends Activity implements TabHost.OnTabChangeListene
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.back:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
             case R.id.woman:
                 if (Tab.equals("tab1")) {
                     mAdapter = new MySizeAdapter(1,shoe_woman);
