@@ -341,7 +341,6 @@ public class MirrorActivity extends Activity implements View.OnClickListener
         Intent intent = new Intent();
         intent.setAction(android.content.Intent.ACTION_VIEW);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         intent.setDataAndType(photoURI, "image/*");
         startActivity(intent);
 
