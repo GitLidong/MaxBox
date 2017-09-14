@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/qr_code_header_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/common_actionbar_height"
         android:background="@drawable/shape_corner_up"
@@ -24,4 +25,55 @@
             android:textColor="@color/compass_actionbar_title_text_color"
             android:textSize="@dimen/common_actionbar_title_text_size" />
     </RelativeLayout>
+
+    <ViewStub
+        android:id="@+id/qr_code_view_stub"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/qr_code_header_bar"
+        android:layout_gravity="center"
+        />
+
+    <com.lidong.maxbox.views.QrCodeFinderView
+        android:id="@+id/qr_code_view_finder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/qr_code_header_bar"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="1">
+        <ImageView
+            android:id="@+id/qr_code_ll_flash_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/qrcode_lights_btn_style"/>
+        <ImageView
+            android:id="@+id/encode_btn"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="85dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/qrcode_encode_btn_style"
+            android:layout_weight="0.17" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/qr_code_view_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/qr_code_header_bar"
+        android:background="@android:color/black"
+        android:visibility="gone"
+        />
+
 </RelativeLayout>

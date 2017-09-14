@@ -45,6 +45,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.QRcodeActivity" />
+        <activity android:name=".activity.QrCodeResultActivity" />
+        <activity android:name=".activity.QrCodeCreateActivity" />
+        <activity android:name=".activity.QrcodePickActivity" />
+        <activity android:name=".activity.TextActivity" />
+        <activity android:name=".activity.UrlActivity" />
         <activity android:name=".activity.LedActivity" />
         <activity android:name=".activity.CompassMainActivity" />
         <activity android:name=".activity.LedActivity" />
@@ -57,7 +63,7 @@
         <activity android:name=".activity.RulerActivity" />
         <activity android:name=".activity.FlashlightActivity" />
         <activity android:name=".activity.SizeActivity" />
-        <activity android:name=".activity.UnitConverterActivity"></activity>
+        <activity android:name=".activity.UnitConverterActivity" />
     </application>
 
 </manifest>
