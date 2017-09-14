@@ -76,7 +76,9 @@ public class MyToolsMenuAdapter extends RecyclerView.Adapter<MyToolsMenuAdapter.
         private View.OnLongClickListener onLongClick = new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                toolsClickCallback.makeShortcut( whichMenu==0? mMenuOneItemNames[position]:mMenuTwoItemNames[position]);
+                String shortcutName = whichMenu==0? mMenuOneItemNames[position]:mMenuTwoItemNames[position];
+                int shortcutIcon = whichMenu == 0 ? menu_one_bg[position]:menu_two_bg[position];
+                toolsClickCallback.makeShortcut(shortcutName,shortcutIcon);
                 //return true消耗了事件，不会继续传递
                 return true;
             }

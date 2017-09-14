@@ -12,6 +12,7 @@ import com.lidong.maxbox.activity.ProtractorActivity;
 import com.lidong.maxbox.activity.RulerActivity;
 import com.lidong.maxbox.activity.SizeActivity;
 import com.lidong.maxbox.activity.SoundMetelActivity;
+import com.lidong.maxbox.activity.UnitConverterActivity;
 
 /**
  * Created by ubuntu on 17-8-31.
@@ -59,6 +60,7 @@ public class ActivityFactory {
                     activity=new ProtractorActivity();
                     break;
                 case 4:
+                    activity = new UnitConverterActivity();
                     break;
                 case 5:
                     activity = new SizeActivity();

@@ -30,6 +30,231 @@
         <item>90dB</item>
     </string-array>
 
+    <string-array name="unit_length_list">
+        <item>mm</item>
+        <item>cm</item>
+        <item>m</item>
+        <item>km</item>
+        <item>yd</item>
+        <item>ft</item>
+        <item>inch</item>
+        <item>mile</item>
+        <item>尺</item>
+        <item>寸</item>
+        <item>丈</item>
+        <item>里</item>
+        <item>海里</item>
+    </string-array>
+    <string-array name="unit_area_list">
+        <item>cm²</item>
+        <item>m²</item>
+        <item>km²</item>
+        <item>ha</item>
+        <item>ac</item>
+        <item>ft²</item>
+        <item>in²</item>
+        <item>yd²</item>
+    </string-array>
+    <string-array name="unit_weight_list">
+        <item>mg</item>
+        <item>g</item>
+        <item>kg</item>
+        <item>t</item>
+        <item>gr.</item>
+        <item>oz</item>
+        <item>lb</item>
+        <item>匁</item>
+        <item>斤</item>
+    </string-array>
+    <string-array name="unit_volume_list">
+        <item>mℓ</item>
+        <item>dℓ</item>
+        <item>ℓ</item>
+        <item>cm³</item>
+        <item>m³</item>
+        <item>km³</item>
+        <item>in³</item>
+        <item>ft³</item>
+        <item>pt(US)</item>
+        <item>qt(US)</item>
+        <item>gal(US)</item>
+        <item>bl</item>
+        <item>石</item>
+        <item>斗</item>
+        <item>升</item>
+        <item>合</item>
+    </string-array>
+    <string-array name="unit_temperature_list">
+        <item>°C</item>
+        <item>°F</item>
+        <item>K</item>
+        <item>°R</item>
+    </string-array>
+    <string-array name="unit_time_list">
+        <item>ns</item>
+        <item>μs</item>
+        <item>ms</item>
+        <item>s</item>
+        <item>min</item>
+        <item>hour</item>
+        <item>day</item>
+        <item>week</item>
+        <item>year</item>
+    </string-array>
+    <string-array name="unit_pressure_list">
+        <item>Pa</item>
+        <item>Hpa</item>
+        <item>bar</item>
+        <item>Ba.b</item>
+        <item>atm</item>
+        <item>at</item>
+        <item>mmH2O</item>
+        <item>inHg</item>
+        <item>mmHg</item>
+        <item>torr</item>
+        <item>psi</item>
+        <item>kgf/mm²</item>
+    </string-array>
+    <string-array name="unit_speed_list">
+        <item>m/sec</item>
+        <item>km/h</item>
+        <item>fps</item>
+        <item>mph</item>
+        <item>kn、kt</item>
+    </string-array>
+    <string-array name="unit_data_list">
+        <item>bit</item>
+        <item>byte</item>
+        <item>KB</item>
+        <item>MB</item>
+        <item>GB</item>
+        <item>TB</item>
+    </string-array>
+    <string-array name="unit_radioactivity_list">
+        <item>μSv</item>
+        <item>mSv</item>
+        <item>Sv</item>
+    </string-array>
+
+    <string-array name="unit_length_value_list">
+        <item>1</item>
+        <item>0.1</item>
+        <item>0.001</item>
+        <item>1e-6</item>
+        <item>0.001094</item>
+        <item>0.003281</item>
+        <item>0.03937</item>
+        <item>6.2137e-7</item>
+        <item>0.0033</item>
+        <item>0.033</item>
+        <item>0.00033</item>
+        <item>2.5463e-7</item>
+        <item>5.3996e-7</item>
+    </string-array>
+    <string-array name="unit_area_value_list">
+        <item>1</item>
+        <item>0.001</item>
+        <item>10e-11</item>
+        <item>1e-8</item>
+        <item>2.47e-8</item>
+        <item>0.001076</item>
+        <item>0.155</item>
+        <item>0.00012</item>
+    </string-array>
+    <string-array name="unit_weight_value_list">
+        <item>1</item>
+        <item>0.001</item>
+        <item>1e-6</item>
+        <item>1e-9</item>
+        <item>0.015432</item>
+        <item>0.000035</item>
+        <item>2.2046e-6</item>
+        <item>0.0267</item>
+        <item>1.6666e-6</item>
+    </string-array>
+    <string-array name="unit_volume_value_list">
+        <item>1</item>
+        <item>0.01</item>
+        <item>0.001</item>
+        <item>1</item>
+        <item>1e-6</item>
+        <item>1e-15</item>
+        <item>0.061024</item>
+        <item>0.000035</item>
+        <item>0.002113</item>
+        <item>0.001057</item>
+        <item>0.000264</item>
+        <item>6.2898e-6</item>
+        <item>5.5435e-6</item>
+        <item>0.000055</item>
+        <item>0.000554</item>
+        <item>0.005544</item>
+    </string-array>
+    <string-array name="unit_temperature_value_list">
+        <item>1</item>
+        <item>33.8</item>
+        <item>274.15</item>
+        <item>493.47</item>
+    </string-array>
+    <string-array name="unit_time_value_list">
+        <item>1</item>
+        <item>0.001</item>
+        <item>1e-6</item>
+        <item>1e-9</item>
+        <item>1.6667e-11</item>
+        <item>2.7778e-13</item>
+        <item>1.1574e-14</item>
+        <item>1.6534e-15</item>
+        <item>3.171e-17</item>
+    </string-array>
+    <string-array name="unit_pressure_value_list">
+        <item>1</item>
+        <item>0.01</item>
+        <item>10e-6</item>
+        <item>10</item>
+        <item>9.8692e-6</item>
+        <item>0.00001</item>
+        <item>0.101972</item>
+        <item>0.000295</item>
+        <item>0.007501</item>
+        <item>0.007501</item>
+        <item>0.000145</item>
+        <item>1.0197e-7</item>
+    </string-array>
+    <string-array name="unit_speed_value_list">
+        <item>1</item>
+        <item>3.59997</item>
+        <item>3.280836</item>
+        <item>2.236935</item>
+        <item>1.943843</item>
+    </string-array>
+    <string-array name="unit_data_value_list">
+        <item>1</item>
+        <item>0.125</item>
+        <item>0.000122</item>
+        <item>1.1926e-7</item>
+        <item>1.1642e-10</item>
+        <item>1.1369e-13</item>
+    </string-array>
+    <string-array name="unit_radioactivity_value_list">
+        <item>1</item>
+        <item>0.001</item>
+        <item>1e-6</item>
+    </string-array>
+
+    <string-array name="unit_name">
+        <item>长度</item>
+        <item>面积</item>
+        <item>重量</item>
+        <item>体积</item>
+        <item>温度</item>
+        <item>时间</item>
+        <item>压力</item>
+        <item>速度</item>
+        <item>数据</item>
+        <item>放射性</item>
+    </string-array>
+
     <string-array name="tools_size_clothes_man">
         <item>~34(~XS,S):~34:~38:~44:85:~S</item>
         <item>36(~XS,S):36:40:46:90:S</item>

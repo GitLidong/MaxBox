@@ -6,5 +6,5 @@ package com.lidong.maxbox.myinterface;
 
 public interface ToolsClickCallback {
     void switchActivity(int whichMenu,int position);
-    void makeShortcut(String name);
+    void makeShortcut(String name,int icon);
 }
