@@ -51,6 +51,7 @@
         <activity android:name=".activity.QrcodePickActivity" />
         <activity android:name=".activity.TextActivity" />
         <activity android:name=".activity.UrlActivity" />
+        <activity android:name=".activity.DisplayQrcodeActivity" />
         <activity android:name=".activity.LedActivity" />
         <activity android:name=".activity.CompassMainActivity" />
         <activity android:name=".activity.LedActivity" />

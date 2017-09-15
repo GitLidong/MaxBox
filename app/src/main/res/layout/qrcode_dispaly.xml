@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/qr_code_header_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_actionbar_height"
+        android:background="@drawable/shape_corner_up"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/back"
+            android:layout_width="@dimen/common_actionbar_back_width"
+            android:layout_height="@dimen/common_actionbar_back_height"
+            android:layout_marginTop="@dimen/common_actionbar_btn_margintop"
+            android:layout_marginLeft="@dimen/common_actionbar_btn_marginleft"
+            android:background="@drawable/common_actionbar_back_style"/>
+        <TextView
+            android:id="@+id/type_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/typeOfText"
+            android:textColor="@color/compass_actionbar_title_text_color"
+            android:textSize="@dimen/common_actionbar_title_text_size" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/qr_code_header_bar"
+        android:background="@color/colorWhite">
+        <ImageView
+            android:id="@+id/image_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="160dp"/>
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:layout_below="@id/image_code"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>
