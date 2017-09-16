@@ -40,8 +40,9 @@ public class QrcodePickActivity extends Activity implements View.OnClickListener
 
     private void initData() {
         type_texts =new String[] {"Text","Url","SMS","Phone Number","Contact","Email"};
-        type_image = new int[] {R.drawable.text, R.drawable.url
-        , R.drawable.message, R.drawable.phone, R.drawable.contact, R.drawable.email};
+        type_image = new int[] { R.drawable.text, R.drawable.url,
+                R.drawable.message, R.drawable.phone,
+                R.drawable.contact, R.drawable.email };
         demos = new DemoInfo[]{
                 new DemoInfo(TextActivity.class),
                 new DemoInfo(UrlActivity.class)

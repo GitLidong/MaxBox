@@ -4,24 +4,33 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.lidong.maxbox.R;
+
+import org.litepal.LitePal;
 
 /**
  * Created by ubuntu on 17-9-13.
  */
 
 public class QrCodeCreateActivity extends Activity implements View.OnClickListener{
+    private String TAG = "QrCodeCreateActivity";
     private Button back;
     private Button add;
+
+    private RecyclerView recyclerViewShowQrcode;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.enqrcode);
         initView();
+
+        initDatabase();
     }
 
     private void initView() {
@@ -29,6 +38,17 @@ public class QrCodeCreateActivity extends Activity implements View.OnClickListen
         add = (Button) findViewById(R.id.add);
         back.setOnClickListener(this);
         add.setOnClickListener(this);
+
+        recyclerViewShowQrcode = (RecyclerView) findViewById(R.id.recycleview_showdata);
+    }
+
+    private void initDatabase() {
+        /*
+        * 使用第三方库 litepal，具体使用参照
+        *  https://github.com/LitePalFramework/LitePal
+         */
+        LitePal.getDatabase();
+        Log.i(TAG,"LitaPal create database success!!");
     }
 
     @Override
