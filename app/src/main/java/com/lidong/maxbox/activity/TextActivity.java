@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.lidong.maxbox.R;
 import com.lidong.maxbox.util.EncodingUtils;
@@ -30,6 +31,7 @@ public class TextActivity extends Activity implements View.OnClickListener
     private Button add;
     private EditText text;
     private Bitmap bitmap;
+    private String texts;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class TextActivity extends Activity implements View.OnClickListener
         add = (Button) findViewById(R.id.add);
         add.setOnClickListener(this);
         text = (EditText) findViewById(R.id.edit_text);
-        text.setOnFocusChangeListener(this);
+        //text.setOnFocusChangeListener(this);
     }
 
     @Override
@@ -55,14 +57,19 @@ public class TextActivity extends Activity implements View.OnClickListener
                 startActivity(intent1);
                 break;
             case R.id.add:
-                bitmap = EncodingUtils.createQRCode(text.getText().toString().trim());
-                Intent intent = new Intent(TextActivity.this,DisplayQrcodeActivity.class);
-                ImageInfoBean dto = new ImageInfoBean();
-                String uri = createImageFromBitmap(bitmap);
-                dto.setDescription(text.getText().toString());
-                dto.setUri(uri);
-                intent.putExtra("encode_text", dto);
-                startActivity(intent);
+                texts = text.getText().toString();
+                if (texts.equals("")) {
+                    Toast.makeText(TextActivity.this,"The input is empty",Toast.LENGTH_SHORT).show();
+                } else {
+                    bitmap = EncodingUtils.createQRCode_text(text.getText().toString().trim());
+                    Intent intent = new Intent(TextActivity.this,DisplayQrcodeActivity.class);
+                    ImageInfoBean dto = new ImageInfoBean();
+                    String uri = createImageFromBitmap(bitmap);
+                    dto.setDescription("Content:"+text.getText().toString());
+                    dto.setUri(uri);
+                    intent.putExtra("encode_text", dto);
+                    startActivity(intent);
+                }
                 break;
         }
     }
