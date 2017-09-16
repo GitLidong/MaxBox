@@ -1,10 +1,12 @@
 package com.lidong.maxbox.database;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by ubuntu on 17-9-16.
  */
 
-public class QrcodeData {
+public class QrcodeData extends DataSupport{
 
     private int id;
     private String imageFile;

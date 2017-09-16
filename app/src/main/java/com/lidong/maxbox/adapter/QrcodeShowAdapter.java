@@ -1,12 +1,16 @@
 package com.lidong.maxbox.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lidong.maxbox.R;
+import com.lidong.maxbox.database.QrcodeData;
+
+import java.util.List;
 
 /**
  * Created by ubuntu on 17-9-16.
@@ -14,23 +18,28 @@ import com.lidong.maxbox.R;
 
 public class QrcodeShowAdapter extends RecyclerView.Adapter<QrcodeShowAdapter.ViewHolder>{
 
-    QrcodeShowAdapter() {
+    private List<QrcodeData> data;
 
+    public QrcodeShowAdapter(List<QrcodeData> data) {
+        this.data = data;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_qrcode,parent,false);
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+        holder.cell_qrcode_name.setText(data.get(position).getQrName());
+        holder.cell_qrcode_content.setText(data.get(position).getQrContent());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return data.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

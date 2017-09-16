@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.lidong.maxbox.R;
+import com.lidong.maxbox.database.MyDatabaseHelper;
+import com.lidong.maxbox.database.QrcodeData;
 import com.lidong.maxbox.util.EncodingUtils;
 import com.lidong.maxbox.util.ImageInfoBean;
 
@@ -61,6 +63,12 @@ public class TextActivity extends Activity implements View.OnClickListener
                 if (texts.equals("")) {
                     Toast.makeText(TextActivity.this,"The input is empty",Toast.LENGTH_SHORT).show();
                 } else {
+
+                    QrcodeData qrcodeData = new QrcodeData();
+                    qrcodeData.setQrName("Text");
+                    qrcodeData.setQrContent(text.getText().toString());
+                    MyDatabaseHelper.addData(qrcodeData);
+
                     bitmap = EncodingUtils.createQRCode_text(text.getText().toString().trim());
                     Intent intent = new Intent(TextActivity.this,DisplayQrcodeActivity.class);
                     ImageInfoBean dto = new ImageInfoBean();

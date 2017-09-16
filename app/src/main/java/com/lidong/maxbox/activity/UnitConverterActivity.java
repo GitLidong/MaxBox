@@ -30,9 +30,6 @@ public class UnitConverterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unit_converter);
 
-        Calendar calendar = Calendar.getInstance();
-
-
         initView();
     }
 
