@@ -25,7 +25,7 @@ public class EncodingUtils {
 
 
 
-    public static Bitmap createQRCode(String content) {
+    public static Bitmap createQRCode_text(String content) {
         int widthPix = 500;
         int heightPix = 500;
         try {
@@ -38,8 +38,8 @@ public class EncodingUtils {
             // 容错级别
             hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
             // 图像数据转换，使用了矩阵转换
-            BitMatrix bitMatrix = new QRCodeWriter().encode(content, BarcodeFormat.QR_CODE, widthPix,
-                    heightPix, hints);
+            BitMatrix bitMatrix = new QRCodeWriter().encode(content, BarcodeFormat.QR_CODE,
+                    widthPix, heightPix, hints);
             int[] pixels = new int[widthPix * heightPix];
             // 下面这里按照二维码的算法，逐个生成二维码的图片，
             // 两个for循环是图片横列扫描的结果

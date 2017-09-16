@@ -25,8 +25,6 @@ public class DisplayQrcodeActivity extends Activity implements View.OnClickListe
     private TextView type;
     private TextView content;
     private ImageView encode;
-    private String contents;
-    private Bitmap bmp;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,7 +62,7 @@ public class DisplayQrcodeActivity extends Activity implements View.OnClickListe
                 encode.setImageBitmap(bitmap);
                 encode.invalidate(); // refresh
 
-                content.setText("Content:" + dto.getDescription());
+                content.setText(dto.getDescription());
                 return;
             }
         } catch (FileNotFoundException e) {
