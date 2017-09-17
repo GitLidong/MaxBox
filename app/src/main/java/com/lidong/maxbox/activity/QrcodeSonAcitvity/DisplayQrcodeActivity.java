@@ -23,6 +23,7 @@ import java.io.FileNotFoundException;
 public class DisplayQrcodeActivity extends Activity implements View.OnClickListener{
     private Button back;
     private TextView type;
+    private String type_name;
     private TextView content;
     private ImageView encode;
 
@@ -38,6 +39,8 @@ public class DisplayQrcodeActivity extends Activity implements View.OnClickListe
         back = (Button) findViewById(R.id.back);
         back.setOnClickListener(this);
         type = (TextView) findViewById(R.id.type_textview);
+        type_name = (String) this.getIntent().getExtras().get("type");
+        type.setText(type_name);
         content = (TextView) findViewById(R.id.content);
         encode = (ImageView) findViewById(R.id.image_code);
     }
