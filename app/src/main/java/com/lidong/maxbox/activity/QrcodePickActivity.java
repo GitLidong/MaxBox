@@ -45,7 +45,11 @@ public class QrcodePickActivity extends Activity implements View.OnClickListener
                 R.drawable.contact, R.drawable.email };
         demos = new DemoInfo[]{
                 new DemoInfo(TextActivity.class),
-                new DemoInfo(UrlActivity.class)
+                new DemoInfo(UrlActivity.class),
+                new DemoInfo(SmsActivity.class),
+                new DemoInfo(PhoneNumberActivity.class),
+                new DemoInfo(ContactActivity.class),
+                new DemoInfo(EmailActivity.class)
         };
     }
 

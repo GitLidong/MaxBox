@@ -18,6 +18,7 @@
             android:layout_marginLeft="@dimen/common_actionbar_btn_marginleft"
             android:background="@drawable/input_no_style"/>
         <TextView
+            android:id="@+id/textoftype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
