@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lidong.maxbox.R;
+import com.lidong.maxbox.database.MyDatabaseHelper;
+import com.lidong.maxbox.database.QrcodeData;
 import com.lidong.maxbox.util.EncodingUtils;
 import com.lidong.maxbox.util.ImageInfoBean;
 
@@ -167,6 +169,13 @@ public class ContactActivity extends Activity implements View.OnClickListener{
                 } else {
                     bitmap = EncodingUtils.createQRCode_text(content);
                     String uri = EncodingUtils.createImageFromBitmap(bitmap);
+
+                    QrcodeData qrcodeData = new QrcodeData();
+                    qrcodeData.setQrName("Contact");
+                    qrcodeData.setQrContent(add_content);
+                    qrcodeData.setImageFile(uri);
+                    MyDatabaseHelper.addData(qrcodeData);
+
                     Intent intent = new Intent(ContactActivity.this,DisplayQrcodeActivity.class);
                     ImageInfoBean dto = new ImageInfoBean();
                     dto.setDescription(add_content);

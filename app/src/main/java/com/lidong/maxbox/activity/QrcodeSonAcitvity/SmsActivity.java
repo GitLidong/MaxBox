@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lidong.maxbox.R;
+import com.lidong.maxbox.database.MyDatabaseHelper;
+import com.lidong.maxbox.database.QrcodeData;
 import com.lidong.maxbox.util.EncodingUtils;
 import com.lidong.maxbox.util.ImageInfoBean;
 
@@ -70,6 +72,12 @@ public class SmsActivity extends Activity implements View.OnClickListener{
                 } else {
                     bitmap = EncodingUtils.createQRCode_text(texts.trim());
                     String uri = EncodingUtils.createImageFromBitmap(bitmap);
+
+                    QrcodeData qrcodeData = new QrcodeData();
+                    qrcodeData.setQrName("Sms");
+                    qrcodeData.setQrContent(reciver);
+                    qrcodeData.setImageFile(uri);
+                    MyDatabaseHelper.addData(qrcodeData);
 
                     Intent intent = new Intent(SmsActivity.this,DisplayQrcodeActivity.class);
                     ImageInfoBean dto = new ImageInfoBean();

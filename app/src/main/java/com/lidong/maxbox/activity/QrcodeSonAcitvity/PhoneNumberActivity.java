@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lidong.maxbox.R;
+import com.lidong.maxbox.database.MyDatabaseHelper;
+import com.lidong.maxbox.database.QrcodeData;
 import com.lidong.maxbox.util.EncodingUtils;
 import com.lidong.maxbox.util.ImageInfoBean;
 
@@ -69,9 +71,17 @@ public class PhoneNumberActivity extends Activity implements View.OnClickListene
 
                 } else {
                     bitmap = EncodingUtils.createQRCode_text("tel:"+texts.trim());
+                    String uri = createImageFromBitmap(bitmap);
+
+                    QrcodeData qrcodeData = new QrcodeData();
+                    qrcodeData.setQrName("Phone");
+                    qrcodeData.setQrContent(texts);
+                    qrcodeData.setImageFile(uri);
+                    MyDatabaseHelper.addData(qrcodeData);
+
                     Intent intent = new Intent(PhoneNumberActivity.this,DisplayQrcodeActivity.class);
                     ImageInfoBean dto = new ImageInfoBean();
-                    String uri = createImageFromBitmap(bitmap);
+
                     dto.setDescription("Phone number:"+texts);
                     dto.setUri(uri);
                     intent.putExtra("encode_text", dto);

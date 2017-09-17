@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lidong.maxbox.R;
+import com.lidong.maxbox.database.MyDatabaseHelper;
+import com.lidong.maxbox.database.QrcodeData;
 import com.lidong.maxbox.util.EncodingUtils;
 import com.lidong.maxbox.util.ImageInfoBean;
 
@@ -64,9 +66,16 @@ public class EmailActivity extends Activity implements View.OnClickListener{
                     Toast.makeText(EmailActivity.this,"The input is empty",Toast.LENGTH_SHORT).show();
                 } else {
                     bitmap = EncodingUtils.createQRCode_text("mailto:"+texts.trim());
+                    String uri = createImageFromBitmap(bitmap);
+
+                    QrcodeData qrcodeData = new QrcodeData();
+                    qrcodeData.setQrName("Email");
+                    qrcodeData.setQrContent(texts);
+                    qrcodeData.setImageFile(uri);
+                    MyDatabaseHelper.addData(qrcodeData);
+
                     Intent intent = new Intent(EmailActivity.this,DisplayQrcodeActivity.class);
                     ImageInfoBean dto = new ImageInfoBean();
-                    String uri = createImageFromBitmap(bitmap);
                     dto.setDescription("Address:"+texts);
                     dto.setUri(uri);
                     intent.putExtra("encode_text", dto);
