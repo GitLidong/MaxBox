@@ -97,19 +97,4 @@ public class TextActivity extends Activity implements View.OnClickListener
             et.setHint(hint);
         }
     }
-
-//    public String createImageFromBitmap(Bitmap bitmap) {
-//        String fileName = "myImage";
-//        try {
-//            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-//            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-//            FileOutputStream fo = openFileOutput(fileName, Context.MODE_PRIVATE);
-//            fo.write(bytes.toByteArray());
-//            fo.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            fileName = null;
-//        }
-//        return fileName;
-//    }
 }

@@ -62,7 +62,6 @@ public class MyToolsMenuAdapter extends RecyclerView.Adapter<MyToolsMenuAdapter.
 
             itemView.setOnClickListener(onClick);
             itemView.setOnLongClickListener(onLongClick);
-            itemView.setOnTouchListener(onTouch);
         }
 
         private View.OnClickListener onClick =new View.OnClickListener() {
@@ -81,24 +80,6 @@ public class MyToolsMenuAdapter extends RecyclerView.Adapter<MyToolsMenuAdapter.
                 toolsClickCallback.makeShortcut(shortcutName,shortcutIcon);
                 //return true消耗了事件，不会继续传递
                 return true;
-            }
-        };
-
-        private View.OnTouchListener onTouch = new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        v.setBackgroundColor(Color.parseColor("#FFC125"));
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        v.setBackgroundResource(0);
-                        break;
-                    default:
-                        v.setBackgroundResource(0);
-                        break;
-                }
-                return false;
             }
         };
     }

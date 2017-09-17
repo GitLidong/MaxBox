@@ -1,6 +1,8 @@
 package com.lidong.maxbox.activity.QrcodeSonAcitvity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +17,8 @@ import com.lidong.maxbox.activity.QRcodeActivity;
 import com.lidong.maxbox.adapter.QrcodeShowAdapter;
 import com.lidong.maxbox.database.MyDatabaseHelper;
 import com.lidong.maxbox.database.QrcodeData;
+import com.lidong.maxbox.myinterface.QrCodeClickCallback;
+import com.lidong.maxbox.util.ImageInfoBean;
 
 import org.litepal.LitePal;
 
@@ -22,6 +26,8 @@ import java.util.List;
 
 /**
  * Created by ubuntu on 17-9-13.
+ * 这个界面用于展示所有的已经添加二维码
+ * 可以增 删 查
  */
 
 public class QrCodeCreateActivity extends Activity implements View.OnClickListener{
@@ -38,7 +44,6 @@ public class QrCodeCreateActivity extends Activity implements View.OnClickListen
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.enqrcode);
-
         initDatabase();
         initView();
     }
@@ -57,6 +62,8 @@ public class QrCodeCreateActivity extends Activity implements View.OnClickListen
         qrcodeDataList = MyDatabaseHelper.getAllData();
         if (qrcodeDataList.size() >0) {
             qrcodeShowAdapter = new QrcodeShowAdapter(qrcodeDataList);
+            qrcodeShowAdapter.setQrCodeClickListener(qrCodeClickCallback);
+
             recyclerViewShowQrcode.setAdapter(qrcodeShowAdapter);
         }
     }
@@ -67,7 +74,7 @@ public class QrCodeCreateActivity extends Activity implements View.OnClickListen
         *  https://github.com/LitePalFramework/LitePal
          */
         LitePal.getDatabase();
-        Log.i(TAG,"LitaPal create database success!!");
+        Log.i(TAG,"LitaPal create database success ,or database exists already !!");
     }
 
     @Override
@@ -82,5 +89,63 @@ public class QrCodeCreateActivity extends Activity implements View.OnClickListen
                 startActivity(intent2);
                 break;
         }
+    }
+
+    /*
+     * 自定义接口，用于回调 RecyclerView 的 Adapter的点击事件
+     */
+    private QrCodeClickCallback qrCodeClickCallback = new QrCodeClickCallback() {
+        @Override
+        public void scallQr(String imageFile) {
+            scalllQrCode(imageFile);
+        }
+
+        @Override
+        public void shareQr(String imageFile) {
+
+        }
+
+        @Override
+        public void deleteQr(String imageFile, int whichItem) {
+            whenDeleteShowDialog(imageFile,whichItem);
+        }
+    };
+
+    /*
+     * 用于查看 二维码的 界面跳转，数据传递
+     */
+    private void scalllQrCode(String imageFile) {
+        QrcodeData temp = MyDatabaseHelper.getQrcodeData(imageFile);
+        Intent intent = new Intent(QrCodeCreateActivity.this,DisplayQrcodeActivity.class);
+        ImageInfoBean infoBean = new ImageInfoBean();
+        infoBean.setDescription("Content:"+temp.getQrContent());
+        infoBean.setUri(temp.getImageFile());
+        intent.putExtra("encode_text", infoBean);
+        startActivity(intent);
+    }
+
+    /*
+     * 用于删除提示的 dialog
+     */
+    private void whenDeleteShowDialog(final String imageFile,final int whichItem) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setTitle("Delete")
+                .setMessage("Are you sure to delete the selected items?")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        MyDatabaseHelper.deleteData(imageFile);
+                        qrcodeDataList.remove(whichItem);
+                        qrcodeShowAdapter.notifyItemRemoved(whichItem);
+                        qrcodeShowAdapter.notifyItemRangeChanged(whichItem,qrcodeDataList.size()-1);
+                        Log.i(TAG,"qrcodeDataList index at "+whichItem+" was removed and notify adapter refresh !");
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+        alertDialog.show();
     }
 }

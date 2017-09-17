@@ -10,6 +10,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#F5F5F5</color>
     <color name="colorGray">#808080</color>
+    <color name="colorMenuPressed">#FFC125</color>
+    <color name="colorMenuNormal">#00000000</color>
     
    <!-- 公共资源 -->
    <color name="common_actionbar_title_text_color">#fff5f8f9</color>
