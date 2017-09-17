@@ -1,4 +1,4 @@
-package com.lidong.maxbox.activity;
+package com.lidong.maxbox.activity.QrcodeSonAcitvity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,10 +20,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 
 /**
- * Created by ubuntu on 17-9-14.
+ * Created by ubuntu on 17-9-17.
  */
 
-public class UrlActivity extends Activity implements View.OnClickListener{
+public class PhoneNumberActivity extends Activity implements View.OnClickListener{
+
     private Button delete;
     private Button add;
     private EditText text;
@@ -41,37 +42,40 @@ public class UrlActivity extends Activity implements View.OnClickListener{
 
     private void initView() {
         type = (TextView) findViewById(R.id.textoftype);
-        type.setText("Url");
+        type.setText("Phone Number");
         text_info = (TextView) findViewById(R.id.textinfo);
-        text_info.setText("Input url");
+        text_info.setText("Input number");
         delete = (Button) findViewById(R.id.delete);
         delete.setOnClickListener(this);
         add = (Button) findViewById(R.id.add);
         add.setOnClickListener(this);
         text = (EditText) findViewById(R.id.edit_text);
-        text.setText("http://");
+        text.setHint(R.string.inputPhoneNumHint);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.delete:
-                Intent intent1 = new Intent (UrlActivity.this,QrcodePickActivity.class);
+                Intent intent1 = new Intent (PhoneNumberActivity.this,QrcodePickActivity.class);
                 startActivity(intent1);
                 break;
             case R.id.add:
                 texts = text.getText().toString();
                 if (texts.equals("")) {
-                    Toast.makeText(UrlActivity.this,"The input is empty",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PhoneNumberActivity.this,"The input is empty",Toast.LENGTH_SHORT).show();
+                } else if(texts.length() > 18) {
+                    Toast.makeText(PhoneNumberActivity.this,"The input is too long",Toast.LENGTH_SHORT).show();
+
                 } else {
-                    bitmap = EncodingUtils.createQRCode_text(texts.trim());
-                    Intent intent = new Intent(UrlActivity.this,DisplayQrcodeActivity.class);
+                    bitmap = EncodingUtils.createQRCode_text("tel:"+texts.trim());
+                    Intent intent = new Intent(PhoneNumberActivity.this,DisplayQrcodeActivity.class);
                     ImageInfoBean dto = new ImageInfoBean();
                     String uri = createImageFromBitmap(bitmap);
-                    dto.setDescription("Content:"+texts);
+                    dto.setDescription("Phone number:"+texts);
                     dto.setUri(uri);
                     intent.putExtra("encode_text", dto);
-                    intent.putExtra("type","Url");
+                    intent.putExtra("type","Phone Number");
                     startActivity(intent);
                 }
                 break;

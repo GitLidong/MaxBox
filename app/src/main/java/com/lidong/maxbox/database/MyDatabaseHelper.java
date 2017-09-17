@@ -9,11 +9,16 @@ import java.util.List;
  */
 
 public class MyDatabaseHelper {
+
     public static void addData(QrcodeData data) {
         data.save();
     }
 
     public static List<QrcodeData> getAllData() {
         return DataSupport.findAll(QrcodeData.class);
+    }
+
+    public static void deleteData(int position) {
+        DataSupport.deleteAll(QrcodeData.class,"id == ?", String.valueOf(position));
     }
 }

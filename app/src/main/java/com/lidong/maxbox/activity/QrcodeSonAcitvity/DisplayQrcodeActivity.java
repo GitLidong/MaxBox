@@ -1,4 +1,4 @@
-package com.lidong.maxbox.activity;
+package com.lidong.maxbox.activity.QrcodeSonAcitvity;
 
 import android.app.Activity;
 import android.content.Intent;

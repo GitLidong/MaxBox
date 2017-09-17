@@ -1,5 +1,8 @@
 package com.lidong.maxbox.adapter;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,9 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lidong.maxbox.MyApplication;
 import com.lidong.maxbox.R;
 import com.lidong.maxbox.database.QrcodeData;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 /**
@@ -19,9 +24,11 @@ import java.util.List;
 public class QrcodeShowAdapter extends RecyclerView.Adapter<QrcodeShowAdapter.ViewHolder>{
 
     private List<QrcodeData> data;
+    private Context context;
 
     public QrcodeShowAdapter(List<QrcodeData> data) {
         this.data = data;
+        context = MyApplication.getContext();
     }
 
     @Override
@@ -35,6 +42,18 @@ public class QrcodeShowAdapter extends RecyclerView.Adapter<QrcodeShowAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.cell_qrcode_name.setText(data.get(position).getQrName());
         holder.cell_qrcode_content.setText(data.get(position).getQrContent());
+        String imageFile = data.get(position).getImageFile();
+        if (imageFile != null) {
+            try {
+                Bitmap bitmap = BitmapFactory.decodeStream(
+                        context.openFileInput(imageFile) );
+                holder.cell_qrcode_image.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }
 
     @Override

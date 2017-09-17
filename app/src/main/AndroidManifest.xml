@@ -46,16 +46,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.QRcodeActivity" />
-        <activity android:name=".activity.QrCodeResultActivity" />
-        <activity android:name=".activity.QrCodeCreateActivity" />
-        <activity android:name=".activity.QrcodePickActivity" />
-        <activity android:name=".activity.TextActivity" />
-        <activity android:name=".activity.UrlActivity" />
-        <activity android:name=".activity.ContactActivity" />
-        <activity android:name=".activity.PhoneNumberActivity" />
-        <activity android:name=".activity.SmsActivity" />
-        <activity android:name=".activity.EmailActivity" />
-        <activity android:name=".activity.DisplayQrcodeActivity" />
+        <activity android:name=".activity.QrcodeSonAcitvity.QrCodeResultActivity" />
+        <activity android:name=".activity.QrcodeSonAcitvity.QrCodeCreateActivity" />
+        <activity android:name=".activity.QrcodeSonAcitvity.QrcodePickActivity" />
+        <activity android:name=".activity.QrcodeSonAcitvity.TextActivity" />
+        <activity android:name=".activity.QrcodeSonAcitvity.UrlActivity" />
+        <activity android:name=".activity.QrcodeSonAcitvity.ContactActivity" />
+        <activity android:name=".activity.QrcodeSonAcitvity.PhoneNumberActivity" />
+        <activity android:name=".activity.QrcodeSonAcitvity.SmsActivity" />
+        <activity android:name=".activity.QrcodeSonAcitvity.EmailActivity" />
+        <activity android:name=".activity.QrcodeSonAcitvity.DisplayQrcodeActivity" />
         <activity android:name=".activity.LedActivity" />
         <activity android:name=".activity.CompassMainActivity" />
         <activity android:name=".activity.LedActivity" />

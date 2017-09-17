@@ -10,6 +10,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.lidong.maxbox.MyApplication;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
@@ -22,8 +23,6 @@ import java.util.Map;
  */
 
 public class EncodingUtils {
-
-
 
     public static Bitmap createQRCode_text(String content) {
         int widthPix = 500;
@@ -63,5 +62,26 @@ public class EncodingUtils {
         return null;
     }
 
+
+        /*
+     * 通过系统时间创建文件名
+     * 用文件名打开输出流
+     * 将bitmap保存到当前输出流中
+     * 保存在当前的包名的 files中
+     */
+    public static String createImageFromBitmap(Bitmap bitmap) {
+        String fileName = System.currentTimeMillis()+"";
+        try {
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            FileOutputStream fo = MyApplication.getContext().openFileOutput(fileName, Context.MODE_PRIVATE);
+            fo.write(bytes.toByteArray());
+            fo.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            fileName = null;
+        }
+        return fileName;
+    }
 
 }

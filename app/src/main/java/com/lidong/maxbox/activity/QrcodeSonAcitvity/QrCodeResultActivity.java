@@ -1,4 +1,4 @@
-package com.lidong.maxbox.activity;
+package com.lidong.maxbox.activity.QrcodeSonAcitvity;
 
 import android.app.Activity;
 import android.content.ClipData;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lidong.maxbox.R;
+import com.lidong.maxbox.activity.QRcodeActivity;
 
 /**
  * Created by ubuntu on 17-9-12.

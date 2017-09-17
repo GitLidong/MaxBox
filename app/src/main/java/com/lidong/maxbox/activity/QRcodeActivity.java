@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.google.zxing.Result;
 import com.lidong.maxbox.MainActivity;
 import com.lidong.maxbox.R;
+import com.lidong.maxbox.activity.QrcodeSonAcitvity.QrCodeCreateActivity;
+import com.lidong.maxbox.activity.QrcodeSonAcitvity.QrCodeResultActivity;
 import com.lidong.maxbox.camera.CameraManager;
 import com.lidong.maxbox.decode.CaptureActivityHandler;
 import com.lidong.maxbox.decode.DecodeManager;
