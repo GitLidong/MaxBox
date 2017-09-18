@@ -66,7 +66,7 @@ public class EmailActivity extends Activity implements View.OnClickListener{
                     Toast.makeText(EmailActivity.this,"The input is empty",Toast.LENGTH_SHORT).show();
                 } else {
                     bitmap = EncodingUtils.createQRCode_text("mailto:"+texts.trim());
-                    String uri = createImageFromBitmap(bitmap);
+                    String uri = EncodingUtils.createImageFromBitmap(bitmap);
 
                     QrcodeData qrcodeData = new QrcodeData();
                     qrcodeData.setQrName("Email");
@@ -80,24 +80,10 @@ public class EmailActivity extends Activity implements View.OnClickListener{
                     dto.setUri(uri);
                     intent.putExtra("encode_text", dto);
                     intent.putExtra("type","Email");
+                    intent.putExtra("jump",0);
                     startActivity(intent);
                 }
                 break;
         }
-    }
-
-    public String createImageFromBitmap(Bitmap bitmap) {
-        String fileName = "myImage";
-        try {
-            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-            FileOutputStream fo = openFileOutput(fileName, Context.MODE_PRIVATE);
-            fo.write(bytes.toByteArray());
-            fo.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-            fileName = null;
-        }
-        return fileName;
     }
 }

@@ -71,7 +71,7 @@ public class PhoneNumberActivity extends Activity implements View.OnClickListene
 
                 } else {
                     bitmap = EncodingUtils.createQRCode_text("tel:"+texts.trim());
-                    String uri = createImageFromBitmap(bitmap);
+                    String uri = EncodingUtils.createImageFromBitmap(bitmap);
 
                     QrcodeData qrcodeData = new QrcodeData();
                     qrcodeData.setQrName("Phone");
@@ -86,24 +86,10 @@ public class PhoneNumberActivity extends Activity implements View.OnClickListene
                     dto.setUri(uri);
                     intent.putExtra("encode_text", dto);
                     intent.putExtra("type","Phone Number");
+                    intent.putExtra("jump",0);
                     startActivity(intent);
                 }
                 break;
         }
-    }
-
-    public String createImageFromBitmap(Bitmap bitmap) {
-        String fileName = "myImage";
-        try {
-            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-            FileOutputStream fo = openFileOutput(fileName, Context.MODE_PRIVATE);
-            fo.write(bytes.toByteArray());
-            fo.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-            fileName = null;
-        }
-        return fileName;
     }
 }

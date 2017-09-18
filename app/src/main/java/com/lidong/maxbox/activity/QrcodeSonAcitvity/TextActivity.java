@@ -75,6 +75,8 @@ public class TextActivity extends Activity implements View.OnClickListener
                     dto.setDescription("Content:"+text.getText().toString());
                     dto.setUri(uri);
                     intent.putExtra("encode_text", dto);
+                    intent.putExtra("type","Text");
+                    intent.putExtra("jump",0);
                     startActivity(intent);
                 }
                 break;

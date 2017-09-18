@@ -182,6 +182,7 @@ public class ContactActivity extends Activity implements View.OnClickListener{
                     dto.setUri(uri);
                     intent.putExtra("encode_text", dto);
                     intent.putExtra("type","Contact");
+                    intent.putExtra("jump",0);
                     startActivity(intent);
                 }
                 break;

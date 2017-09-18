@@ -131,6 +131,7 @@ public class QrCodeCreateActivity extends Activity implements View.OnClickListen
         infoBean.setUri(temp.getImageFile());
         intent.putExtra("type",temp.getQrName());
         intent.putExtra("encode_text", infoBean);
+        intent.putExtra("jump",1);
         startActivity(intent);
     }
 

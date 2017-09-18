@@ -85,6 +85,7 @@ public class SmsActivity extends Activity implements View.OnClickListener{
                     dto.setUri(uri);
                     intent.putExtra("encode_text", dto);
                     intent.putExtra("type","SMS");
+                    intent.putExtra("jump",0);
                     startActivity(intent);
                 }
                 break;

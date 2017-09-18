@@ -27,6 +27,7 @@ public class DisplayQrcodeActivity extends Activity implements View.OnClickListe
     private String type_name;
     private TextView content;
     private ImageView encode;
+    private int flag;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class DisplayQrcodeActivity extends Activity implements View.OnClickListe
         type.setText(type_name);
         content = (TextView) findViewById(R.id.content);
         encode = (ImageView) findViewById(R.id.image_code);
+        flag = (int) this.getIntent().getExtras().get("jump");
     }
 
     @Override
@@ -54,6 +56,20 @@ public class DisplayQrcodeActivity extends Activity implements View.OnClickListe
                 startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (flag == 0) {
+            Intent intent1 = new Intent(DisplayQrcodeActivity.this,QrcodePickActivity.class);
+            startActivity(intent1);
+        }
+        if (flag == 1) {
+            Intent intent2 = new Intent(DisplayQrcodeActivity.this,QrCodeCreateActivity.class);
+            startActivity(intent2);
+        }
+
     }
 
     private void backFillData() {
