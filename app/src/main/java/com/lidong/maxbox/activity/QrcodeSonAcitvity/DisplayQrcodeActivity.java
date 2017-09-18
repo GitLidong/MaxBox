@@ -18,6 +18,7 @@ import java.io.FileNotFoundException;
 
 /**
  * Created by ubuntu on 17-9-14.
+ * 这个界面用于查看具体的某个 二维码
  */
 
 public class DisplayQrcodeActivity extends Activity implements View.OnClickListener{

@@ -48,6 +48,22 @@ public class QrCodeCreateActivity extends Activity implements View.OnClickListen
         initView();
     }
 
+    /*
+     * 添加 onResume() 方法，解决按back键返回数据无法加载问题
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG,TAG+"  onResume constructed! ");
+        qrcodeDataList = MyDatabaseHelper.getAllData();
+        if (qrcodeDataList.size() >0) {
+            qrcodeShowAdapter = new QrcodeShowAdapter(qrcodeDataList);
+            qrcodeShowAdapter.setQrCodeClickListener(qrCodeClickCallback);
+
+            recyclerViewShowQrcode.setAdapter(qrcodeShowAdapter);
+        }
+    }
+
     private void initView() {
         back = (Button) findViewById(R.id.back);
         add = (Button) findViewById(R.id.add);
@@ -58,14 +74,6 @@ public class QrCodeCreateActivity extends Activity implements View.OnClickListen
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewShowQrcode.setLayoutManager(linearLayoutManager);
-
-        qrcodeDataList = MyDatabaseHelper.getAllData();
-        if (qrcodeDataList.size() >0) {
-            qrcodeShowAdapter = new QrcodeShowAdapter(qrcodeDataList);
-            qrcodeShowAdapter.setQrCodeClickListener(qrCodeClickCallback);
-
-            recyclerViewShowQrcode.setAdapter(qrcodeShowAdapter);
-        }
     }
 
     private void initDatabase() {
@@ -118,8 +126,10 @@ public class QrCodeCreateActivity extends Activity implements View.OnClickListen
         QrcodeData temp = MyDatabaseHelper.getQrcodeData(imageFile);
         Intent intent = new Intent(QrCodeCreateActivity.this,DisplayQrcodeActivity.class);
         ImageInfoBean infoBean = new ImageInfoBean();
+        infoBean.setName(temp.getQrName());
         infoBean.setDescription("Content:"+temp.getQrContent());
         infoBean.setUri(temp.getImageFile());
+        intent.putExtra("type",temp.getQrName());
         intent.putExtra("encode_text", infoBean);
         startActivity(intent);
     }
@@ -137,7 +147,7 @@ public class QrCodeCreateActivity extends Activity implements View.OnClickListen
                         MyDatabaseHelper.deleteData(imageFile);
                         qrcodeDataList.remove(whichItem);
                         qrcodeShowAdapter.notifyItemRemoved(whichItem);
-                        qrcodeShowAdapter.notifyItemRangeChanged(whichItem,qrcodeDataList.size()-1);
+                        qrcodeShowAdapter.notifyItemRangeChanged(whichItem,qrcodeDataList.size()-whichItem);
                         Log.i(TAG,"qrcodeDataList index at "+whichItem+" was removed and notify adapter refresh !");
                     }
                 })

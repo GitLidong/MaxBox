@@ -44,7 +44,7 @@ public class SmsActivity extends Activity implements View.OnClickListener{
 
     private void initView() {
         type = (TextView) findViewById(R.id.textoftype);
-        type.setText("Url");
+        type.setText("SMS");
         text_info = (TextView) findViewById(R.id.textinfo);
         text_info.setText("Input url");
         delete = (Button) findViewById(R.id.delete);
