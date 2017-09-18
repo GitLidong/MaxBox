@@ -51,6 +51,8 @@ public class EmailActivity extends Activity implements View.OnClickListener{
         add = (Button) findViewById(R.id.add);
         add.setOnClickListener(this);
         text = (EditText) findViewById(R.id.edit_text);
+        text.setHint(R.string.inputContactEmailHint);
+        text.setMaxLines(50);
     }
 
     @Override
@@ -64,6 +66,9 @@ public class EmailActivity extends Activity implements View.OnClickListener{
                 texts = text.getText().toString();
                 if (texts.equals("")) {
                     Toast.makeText(EmailActivity.this,"The input is empty",Toast.LENGTH_SHORT).show();
+                } else if (EncodingUtils.checkEmail(texts) == false) {
+                    Toast.makeText(EmailActivity.this,"The format of email is invalid",Toast.LENGTH_SHORT).show();
+
                 } else {
                     bitmap = EncodingUtils.createQRCode_text("mailto:"+texts.trim());
                     String uri = EncodingUtils.createImageFromBitmap(bitmap);

@@ -53,6 +53,7 @@ public class PhoneNumberActivity extends Activity implements View.OnClickListene
         add.setOnClickListener(this);
         text = (EditText) findViewById(R.id.edit_text);
         text.setHint(R.string.inputPhoneNumHint);
+        text.setMaxLines(18);
     }
 
     @Override

@@ -52,6 +52,7 @@ public class UrlActivity extends Activity implements View.OnClickListener{
         add.setOnClickListener(this);
         text = (EditText) findViewById(R.id.edit_text);
         text.setText("http://");
+        text.setMaxLines(50);
     }
 
     @Override

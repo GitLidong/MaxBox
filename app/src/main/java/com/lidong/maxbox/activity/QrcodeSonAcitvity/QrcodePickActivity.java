@@ -100,5 +100,12 @@ public class QrcodePickActivity extends Activity implements View.OnClickListener
             this.demoClass = demoClass;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent2 = new Intent(QrcodePickActivity.this,QrCodeCreateActivity.class);
+        startActivity(intent2);
+    }
 }
 

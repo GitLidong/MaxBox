@@ -53,6 +53,8 @@ public class SmsActivity extends Activity implements View.OnClickListener{
         add.setOnClickListener(this);
         number = (EditText) findViewById(R.id.edit_number);
         content = (EditText) findViewById(R.id.edit_content);
+        number.setMaxLines(18);
+        content.setMaxLines(200);
     }
 
     @Override
