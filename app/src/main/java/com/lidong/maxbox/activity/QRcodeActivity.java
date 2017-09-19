@@ -172,6 +172,7 @@ public class QRcodeActivity extends Activity implements SurfaceHolder.Callback, 
     }
 
     private void initCamera(SurfaceHolder surfaceHolder) {
+        //初始化相机
         try {
             if (!CameraManager.get().openDriver(surfaceHolder)) {
                 Log.i(TAG,"initCamera failed and return !");

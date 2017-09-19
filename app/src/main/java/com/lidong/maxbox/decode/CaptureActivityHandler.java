@@ -31,7 +31,6 @@ public final class CaptureActivityHandler extends Handler {
     private final QRcodeActivity mActivity;
     private DecodeThread mDecodeThread;
     private State mState;
-    private DecodeThread lastThread;
 
     public CaptureActivityHandler(QRcodeActivity activity) {
         this.mActivity = activity;
