@@ -15,6 +15,7 @@ package com.lidong.maxbox.camera;
 
 import android.hardware.Camera;
 import android.os.Handler;
+import android.util.Log;
 import android.view.SurfaceHolder;
 
 import java.io.IOException;
@@ -74,7 +75,9 @@ public final class CameraManager {
         if (mCamera == null) {
             try {
                 mCamera = Camera.open();
+                Log.i("QRcodeActivity","camera is null and do open camera ");
                 if (mCamera != null) {
+                    Log.i("QRcodeActivity","open camera OK and return true");
                     // setParameters 是针对魅族MX5做的。MX5通过Camera.open()拿到的Camera 对象不为null
                     Camera.Parameters mParameters = mCamera.getParameters();
                     mCamera.setParameters(mParameters);
@@ -87,9 +90,11 @@ public final class CameraManager {
                     return true;
                 }
             } catch (Exception e) {
+                Log.i("QRcodeActivity","open camera exception ! ");
                 e.printStackTrace();
             }
         }
+        Log.i("QRcodeActivity","openDriver camera is not null and return false");
         return false;
     }
 
@@ -98,6 +103,7 @@ public final class CameraManager {
      */
     public boolean closeDriver() {
         if (mCamera != null) {
+            Log.i("QRcodeActivity","closeDriver camera is not null and now release camera !");
             try {
                 mCamera.release();
                 mInitialized = false;
@@ -108,6 +114,7 @@ public final class CameraManager {
                 e.printStackTrace();
             }
         }
+        Log.i("QRcodeActivity","closeDriver camera is null and return false");
         return false;
     }
 

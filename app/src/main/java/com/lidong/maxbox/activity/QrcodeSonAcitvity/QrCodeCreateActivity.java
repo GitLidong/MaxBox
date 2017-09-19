@@ -89,8 +89,7 @@ public class QrCodeCreateActivity extends Activity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.back:
-                Intent intent1 =new Intent(QrCodeCreateActivity.this,QRcodeActivity.class);
-                startActivity(intent1);
+                finish();
                 break;
             case R.id.add:
                 Intent intent2 = new Intent(QrCodeCreateActivity.this,QrcodePickActivity.class);

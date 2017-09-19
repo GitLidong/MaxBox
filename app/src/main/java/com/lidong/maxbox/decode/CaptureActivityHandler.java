@@ -29,16 +29,13 @@ public final class CaptureActivityHandler extends Handler {
     private static final String TAG = CaptureActivityHandler.class.getName();
 
     private final QRcodeActivity mActivity;
-    private final DecodeThread mDecodeThread;
+    private DecodeThread mDecodeThread;
     private State mState;
+    private DecodeThread lastThread;
 
     public CaptureActivityHandler(QRcodeActivity activity) {
         this.mActivity = activity;
-        mDecodeThread = new DecodeThread(activity);
-        mDecodeThread.start();
-        mState = State.SUCCESS;
-        // Start ourselves capturing previews and decoding.
-        restartPreviewAndDecode();
+        startThread(activity);
     }
 
     @Override
@@ -92,5 +89,13 @@ public final class CaptureActivityHandler extends Handler {
 
     private enum State {
         PREVIEW, SUCCESS, DONE
+    }
+
+    public void startThread(QRcodeActivity activity){
+        mDecodeThread = new DecodeThread(activity);
+        mDecodeThread.start();
+        mState = State.SUCCESS;
+        // Start ourselves capturing previews and decoding.
+        restartPreviewAndDecode();
     }
 }

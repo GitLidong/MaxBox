@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -32,31 +32,75 @@ import java.io.IOException;
  * 二维码扫描类。
  */
 
-public class QRcodeActivity extends Activity implements SurfaceHolder.Callback,
-        View.OnClickListener {
+public class QRcodeActivity extends Activity implements SurfaceHolder.Callback, View.OnClickListener {
+
+    private String TAG = "QRcodeActivity";
+
+    //?
     public static final String INTENT_OUT_STRING_SCAN_RESULT = "scan_result";
     private static final String INTENT_IN_INT_SUPPORT_TYPE = "support_type";
     private static final int REQUEST_PERMISSIONS = 1;
+
     private CaptureActivityHandler mCaptureActivityHandler;
-    private boolean mHasSurface;
     private InactivityTimer mInactivityTimer;
-    private QrCodeFinderView mQrCodeFinderView;
+
+    //判断当前SurfaceView 是否已经被创建
+    private boolean mHasSurface;
     private SurfaceView mSurfaceView;
-    private View mLlFlashLight;
+    //判断闪光灯是否可以打开
     private boolean mNeedFlashLightOpen = true;
+    // 闪光灯和添加二维码按钮,返回
     private ImageView mIvFlashLight;
     private ImageView mencode;
-    private ViewStub mSurfaceViewStub;
-    private DecodeManager mDecodeManager = new DecodeManager();
     private Button back;
 
+    private QrCodeFinderView mQrCodeFinderView;
+    private ViewStub mSurfaceViewStub;
+    // 二维码解析管理
+    private DecodeManager mDecodeManager;
+    //判断摄像头是否在工作
+    private boolean isCameraWorking;
+
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcode);
-
+        Log.i(TAG,"onCreate QRcodeActivity");
         initView();
+    }
+
+    private void initView() {
+
+        mIvFlashLight = (ImageView) findViewById(R.id.qr_code_ll_flash_light);
+        mIvFlashLight.setOnClickListener(this);
+        mencode = (ImageView) findViewById(R.id.encode_btn);
+        mencode.setOnClickListener(this);
+        back = (Button) findViewById(R.id.back);
+        back.setOnClickListener(this);
+
+        mQrCodeFinderView = (QrCodeFinderView) findViewById(R.id.qr_code_view_finder);
+        mSurfaceViewStub = (ViewStub) findViewById(R.id.qr_code_view_stub);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         initData();
+        Log.i(TAG,"onResume QRcodeActivity");
+        initCamera();
+    }
+
+    private void initData() {
+        CameraManager.init();
+
+        mInactivityTimer = new InactivityTimer(this);
+
+        mHasSurface = false;
+
+        isCameraWorking = false;
+
+        mDecodeManager = new DecodeManager();
     }
 
     @Override
@@ -64,6 +108,7 @@ public class QRcodeActivity extends Activity implements SurfaceHolder.Callback,
         if (!mHasSurface) {
             mHasSurface = true;
             initCamera(surfaceHolder);
+            Log.i(TAG,"surfaceCreated QRcodeActivity");
         }
     }
 
@@ -75,6 +120,8 @@ public class QRcodeActivity extends Activity implements SurfaceHolder.Callback,
     @Override
     public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
         mHasSurface = false;
+        shutdownCameraAndHandler();
+        Log.i(TAG,"surfaceDestroyed");
     }
 
     public Handler getCaptureActivityHandler() {
@@ -103,39 +150,11 @@ public class QRcodeActivity extends Activity implements SurfaceHolder.Callback,
         }
     }
 
-    private void initView() {
-        mIvFlashLight = (ImageView) findViewById(R.id.qr_code_ll_flash_light);
-        mencode = (ImageView) findViewById(R.id.encode_btn);
-        mQrCodeFinderView = (QrCodeFinderView) findViewById(R.id.qr_code_view_finder);
-        mSurfaceViewStub = (ViewStub) findViewById(R.id.qr_code_view_stub);
-        mHasSurface = false;
-        mIvFlashLight.setOnClickListener(this);
-        back = (Button) findViewById(R.id.back);
-        back.setOnClickListener(this);
-        mencode.setOnClickListener(this);
-    }
-
-    private void initData() {
-        CameraManager.init();
-        mInactivityTimer = new InactivityTimer(this);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-            initCamera();
-        //} else {
-            //ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.CAMERA }, REQUEST_PERMISSIONS);
-        //}
-    }
-
     @Override
     protected void onDestroy() {
-        //if (null != mInactivityTimer) {
-            //mInactivityTimer.shutdown();
-        //}
         super.onDestroy();
+        shutdownCameraAndHandler();
+        Log.i(TAG,"onDestroy QRcodeActivity");
     }
 
     private void initCamera() {
@@ -150,6 +169,38 @@ public class QRcodeActivity extends Activity implements SurfaceHolder.Callback,
             surfaceHolder.addCallback(this);
             surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         }
+    }
+
+    private void initCamera(SurfaceHolder surfaceHolder) {
+        try {
+            if (!CameraManager.get().openDriver(surfaceHolder)) {
+                Log.i(TAG,"initCamera failed and return !");
+                showPermissionDeniedDialog();
+                return;
+            }
+        } catch (IOException e) {
+            // 基本不会出现相机不存在的情况
+            Toast.makeText(this, getString(R.string.qr_code_camera_not_found), Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        } catch (RuntimeException re) {
+            Log.i(TAG,"initCamera RuntimeException and return !");
+            re.printStackTrace();
+            showPermissionDeniedDialog();
+            return;
+        }
+        Log.i(TAG,"initCamera OK and continue !");
+
+        mQrCodeFinderView.setVisibility(View.VISIBLE);
+        findViewById(R.id.qr_code_view_background).setVisibility(View.GONE);
+        turnFlashLightOff();
+        if (mCaptureActivityHandler == null) {
+            Log.i(TAG,"mCaptureActivityHandler is null and then new one!");
+            mCaptureActivityHandler = new CaptureActivityHandler(this);
+        } else {
+            mCaptureActivityHandler.startThread(this);
+        }
+        isCameraWorking = true;
     }
 
     /**
@@ -197,34 +248,7 @@ public class QRcodeActivity extends Activity implements SurfaceHolder.Callback,
         }
     }
 
-    private void initCamera(SurfaceHolder surfaceHolder) {
-        try {
-            if (!CameraManager.get().openDriver(surfaceHolder)) {
-                showPermissionDeniedDialog();
-                return;
-            }
-        } catch (IOException e) {
-            // 基本不会出现相机不存在的情况
-            Toast.makeText(this, getString(R.string.qr_code_camera_not_found), Toast.LENGTH_SHORT).show();
-            finish();
-            return;
-        } catch (RuntimeException re) {
-            re.printStackTrace();
-            showPermissionDeniedDialog();
-            return;
-        }
-        mQrCodeFinderView.setVisibility(View.VISIBLE);
-        //mLlFlashLight.setVisibility(View.VISIBLE);
-        findViewById(R.id.qr_code_view_background).setVisibility(View.GONE);
-        turnFlashLightOff();
-        if (mCaptureActivityHandler == null) {
-            mCaptureActivityHandler = new CaptureActivityHandler(this);
-        }
-    }
-
     private void showPermissionDeniedDialog() {
-        //findViewById(R.id.qr_code_view_background).setVisibility(View.VISIBLE);
-        //mQrCodeFinderView.setVisibility(View.GONE);
         mDecodeManager.showPermissionDeniedDialog(this);
     }
 
@@ -232,8 +256,7 @@ public class QRcodeActivity extends Activity implements SurfaceHolder.Callback,
         try {
             CameraManager.get().setFlashLight(false);
             mNeedFlashLightOpen = true;
-            //mTvFlashLightText.setText(getString(R.string.qr_code_open_flash_light));
-            //mIvFlashLight.setBackgroundResource(R.drawable.flashlight_turn_on);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -243,10 +266,20 @@ public class QRcodeActivity extends Activity implements SurfaceHolder.Callback,
         try {
             CameraManager.get().setFlashLight(true);
             mNeedFlashLightOpen = false;
-            //mTvFlashLightText.setText(getString(R.string.qr_code_close_flash_light));
-            //mIvFlashLight.setBackgroundResource(R.drawable.flashlight_turn_off);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    /*
+     * 当前界面 被 stop或者 destroy时候 ，释放camera,
+     * 并且停止对应的杀死对应的线程，停止消息处理
+     */
+    private void shutdownCameraAndHandler() {
+        if (isCameraWorking) {
+            mCaptureActivityHandler.quitSynchronously();
+            CameraManager.get().closeDriver();
+            isCameraWorking = false;
         }
     }
 }

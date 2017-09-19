@@ -49,8 +49,7 @@ public class QrCodeResultActivity extends Activity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.back:
-                Intent intent = new Intent(QrCodeResultActivity.this,QRcodeActivity.class);
-                startActivity(intent);
+                finish();
                 break;
             case R.id.copy:
                 //获取剪贴板管理器：
