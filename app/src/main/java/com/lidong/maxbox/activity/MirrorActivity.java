@@ -1,8 +1,10 @@
 package com.lidong.maxbox.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -11,10 +13,10 @@ import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.Surface;
 import android.view.SurfaceHolder;
@@ -32,81 +34,76 @@ import android.widget.Toast;
 import com.lidong.maxbox.R;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by ubuntu on 17-8-30.
+ *
+ * 为了让用户有效地拍照或录像，他们必须能够看到设备相机看到什么。
+ * 相机预览类是可以显示来自相机的实时图像数据的SurfaceView，
+ * 因此用户可以对图片或视频进行构图和捕获。
  */
 
-public class MirrorActivity extends Activity implements View.OnClickListener
-        ,SurfaceHolder.Callback,SeekBar.OnSeekBarChangeListener{
+public class MirrorActivity extends Activity implements View.OnClickListener,
+        SurfaceHolder.Callback,SeekBar.OnSeekBarChangeListener{
 
     private String TAG = "MirrorActivity";
 
-    private SurfaceView mView = null;
+    //SurfaceView 用来加载相机预览，可以显示来自相机的实时图像数据的
+    private SurfaceView mView;
     private SurfaceHolder mHolder=null;
-
     private Camera mCamera=null;
 
     private Button take_photo;
     private ImageView photo_result;
-    public static final String FILE_PATH = "filePath";
-
-    private SharedPreferences preferences;
-    private SharedPreferences shared = null;
-
-    private Camera.AutoFocusCallback mAutoFocusCallback;
 
     private SeekBar seekBar;
     private int num=0;
 
+    private SharedPreferences shared = null;
     private boolean isCameraWorking;
-    private int width,height;
+    int screenWidth, screenHeight;
 
+    //存储照片名字，及文件
     private File pictureFile;
     private String pictureName;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initFullScreen();
         setContentView(R.layout.activity_mirror);
-
         initView();
     }
 
     private void initView() {
-        preferences = getSharedPreferences("count",MODE_PRIVATE);
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        screenWidth = displayMetrics.widthPixels;
+        screenHeight = displayMetrics.heightPixels;
 
         take_photo = (Button) findViewById(R.id.take_photo);
         take_photo.setOnClickListener(this);
-
         photo_result = (ImageView) findViewById(R.id.image_result);
         photo_result.setOnClickListener(this);
-
         seekBar = (SeekBar) findViewById(R.id.seekbar_brintness);
         seekBar.setOnSeekBarChangeListener(this);
         shared=getSharedPreferences("base64",MODE_PRIVATE);
         num=shared.getInt("seekBarNum", 50);
-        Log.i(TAG,""+num);
+        Log.i(TAG,"seekBar num： "+num);
         changeAppBrightness(num);
         seekBar.setProgress(num);
 
         mView=(SurfaceView)this.findViewById(R.id.surfaceView1);
-
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        width = displayMetrics.widthPixels >= displayMetrics.heightPixels ?
-                displayMetrics.heightPixels : displayMetrics.widthPixels;
-        height = displayMetrics.heightPixels;
-
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT, width * 16 / 9);
-        mView.setLayoutParams(params);
         mHolder=mView.getHolder();
-        mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         mHolder.addCallback(this);
+        // 已弃用的设置，但在3.0之前的Android版本上需要
+        mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     }
 
     @Override
@@ -131,24 +128,11 @@ public class MirrorActivity extends Activity implements View.OnClickListener
     }
 
     private void startTakePhoto() {
-        //自动聚焦
-        mCamera.autoFocus(mAutoFocusCallback);
-        mAutoFocusCallback = new Camera.AutoFocusCallback() {
-            public void onAutoFocus(boolean success, Camera camera) {
-                // TODO Auto-generated method stub
-                if(success){
-                    camera.setOneShotPreviewCallback(null);
-                    Toast.makeText(MirrorActivity.this, "自动聚焦成功" , Toast.LENGTH_SHORT).show();
-                }
-            }
-        };
 
         mCamera.takePicture(null, null, new Camera.PictureCallback() {
             @Override
             public void onPictureTaken(byte[] data, Camera camera) {
                 dealWithCameraData(data);
-                initCamera();
-                mCamera.startPreview();
             }
         });
     }
@@ -156,11 +140,8 @@ public class MirrorActivity extends Activity implements View.OnClickListener
     //保存拍照数据
     private void dealWithCameraData(byte[] data) {
         Log.i(TAG,"dealWithCameraData function");
-
-        Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-
+        //根据系统时间命名照片，同时更具名字创建相应的目录和文件
         pictureName =System.currentTimeMillis() + ".jpg";
-
         if (isExternalStorageWritable()) {
             try {
                 pictureFile = getAlbumStorageDir(pictureName);
@@ -168,16 +149,23 @@ public class MirrorActivity extends Activity implements View.OnClickListener
                 e.printStackTrace();
             }
         }
+        //先将图片写入bitmap中
+        Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
         try {
-            //将照片旋转270度，不知道为什么拍完找存储照片回自动旋转90度
+            //将 bitmap 旋转270度，不知道为什么拍完照存储照片会自动旋转90度。
             Matrix matrix = new Matrix();
             matrix.setRotate(270, bitmap.getWidth(),bitmap.getHeight());
             Bitmap resultBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+            //打开文件的输入流，将旋转后的bitmap写入文件中
             FileOutputStream fos = new FileOutputStream(pictureFile);
             resultBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
             fos.flush();
             fos.close();
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
+            Log.d(TAG, "File not found: " + e.getMessage());
+        } catch (IOException e) {
+            Log.d(TAG, "Error accessing file: " + e.getMessage());
+        }catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -185,7 +173,7 @@ public class MirrorActivity extends Activity implements View.OnClickListener
         // 最后通知图库更新
         getApplicationContext().sendBroadcast(
                 new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + path)));
-
+        //设置预览的小照片
         photo_result.setImageBitmap(bitmap);
 
     }
@@ -194,25 +182,37 @@ public class MirrorActivity extends Activity implements View.OnClickListener
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
         // TODO Auto-generated method stub
         initCamera();
-        mCamera.startPreview();
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
-
+        // If your preview can change or rotate, take care of those events here.
+        // Make sure to stop the preview before resizing or reformatting it.
+        if (mHolder.getSurface() == null){
+            // preview surface does not exist
+            return;
+        }
+        // stop preview before making changes
+        try {
+            mCamera.stopPreview();
+        } catch (Exception e){
+            // ignore: tried to stop a non-existent preview
+        }
+        // set preview size and make any resize, rotate or
+        // reformatting changes here
+        // start preview with new settings
+        try {
+            mCamera.setPreviewDisplay(mHolder);
+            mCamera.startPreview();
+        } catch (Exception e){
+            Log.d(TAG, "Error starting camera preview: " + e.getMessage());
+        }
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
         // TODO Auto-generated method stub
-        if(mCamera != null) {
-                /* 若摄像头正在工作，先停止它 */
-            if(isCameraWorking) {
-                mCamera.stopPreview();
-                isCameraWorking = false;
-            }
-            mCamera.release();
-        }
+        releaseCamera();
         Log.i(TAG,"surfaceDestroyed was function and relase camera!");
     }
 
@@ -289,37 +289,75 @@ public class MirrorActivity extends Activity implements View.OnClickListener
         return result;
     }
 
-    //初始化相机参数
+    //初始化相机
     private void initCamera() {
-        //默认启用的摄像头是后置摄像头id=0，  id =1前置摄像头
-        mCamera = Camera.open(1);
-        //获取其他常用设置
-        Camera.Parameters parameters = mCamera.getParameters();
-        try {
-            mCamera.setPreviewDisplay(mHolder);
-            setCameraDisplayOrientation(MirrorActivity.this,0,mCamera);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-         /* 每秒从摄像头捕获5帧画面， */
-        parameters.setPreviewFrameRate(5);
+        if (checkCameraHardware(this)) {
+            mCamera = getCameraInstance();
+            try {
+                mCamera.setPreviewDisplay(mHolder);
+                setCameraDisplayOrientation(MirrorActivity.this,0,mCamera);
+                mCamera.startPreview();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            //获取其他常用设置
+            Camera.Parameters parameters = mCamera.getParameters();
+            List<Camera.Size> sizeList = parameters.getSupportedPreviewSizes();
+            getSuitableSize(sizeList);
+            Log.i(TAG,screenWidth+"  "+screenHeight);
+            //获得摄像区域的大小
+            parameters.setPreviewSize(screenWidth, screenHeight);
+            //设置图片大小
+            parameters.setPictureSize(screenWidth,screenHeight);
+            /* 每秒从摄像头捕获5帧画面， */
+            parameters.setPreviewFrameRate(5);
             /* 设置照片的输出格式:jpg */
-        parameters.setPictureFormat(PixelFormat.JPEG);
-        /* 照片质量 */
-        parameters.set("jpeg-quality", 85);
-        //设置图片大小
-        parameters.setPictureSize(width,height);
-        //设置对焦
-        parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+            parameters.setPictureFormat(PixelFormat.JPEG);
+            /* 照片质量 */
+            parameters.set("jpeg-quality", 85);
+            isCameraWorking = true;
+        }
+        else {
+            Toast.makeText(this,"该设备可能没有摄像头",Toast.LENGTH_SHORT).show();
+        }
+    }
 
-        isCameraWorking = true;
+    /*
+     *  检查设备是否有摄像头
+     */
+    private boolean checkCameraHardware(Context context) {
+        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
+            // this device has a camera
+            return true;
+        } else {
+            // no camera on this device
+            return false;
+        }
+    }
+
+    /*
+     * 安全获取摄像头,默认启用的摄像头是后置摄像头id=0，  id =1前置摄像头
+     * 使用Camera.open（）时，请始终检查异常情况。
+     * 如果相机使用或不存在，则无法检查异常将导致您的应用程序被系统关闭。
+     */
+    public static Camera getCameraInstance(){
+        Camera c = null;
+        try {
+            c = Camera.open(1); // attempt to get a Camera instance
+        }
+        catch (Exception e){
+            // Camera is not available (in use or does not exist)
+        }
+        return c; // returns null if camera is unavailable
     }
 
     @Override
     protected void onStop() {
         // TODO Auto-generated method stub
         super.onStop();
+        releaseCamera();
+
         SharedPreferences.Editor editor=  shared.edit();
         editor.clear();
         editor.putInt("seekBarNum", seekBar.getProgress());
@@ -346,5 +384,45 @@ public class MirrorActivity extends Activity implements View.OnClickListener
 
     }
 
+    /*
+     * 设置全屏
+     */
+    private void initFullScreen() {
+        //无title
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //全屏
+        getWindow().setFlags(
+                WindowManager.LayoutParams. FLAG_FULLSCREEN ,
+                WindowManager.LayoutParams. FLAG_FULLSCREEN);
+    }
+
+    /*
+     * 释放相机
+     */
+    private void releaseCamera(){
+        if(mCamera != null) {
+            /* 若摄像头正在工作，先停止它 */
+            if(isCameraWorking) {
+                mCamera.stopPreview();
+                isCameraWorking = false;
+            }
+            mCamera.release();
+        }
+    }
+
+    //获得合适的尺寸
+    private void getSuitableSize(List<Camera.Size> sizeList) {
+        if (sizeList.size() > 1) {
+            Iterator<Camera.Size> itor = sizeList.iterator();
+            while (itor.hasNext()) {
+                Camera.Size cur = itor.next();
+                if (cur.width >= screenWidth && cur.height >= screenHeight) {
+                    screenWidth = cur.width;
+                    screenHeight = cur.height;
+                    break;
+                }
+            }
+        }
+    }
 }
 
