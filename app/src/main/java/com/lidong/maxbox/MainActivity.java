@@ -2,7 +2,6 @@ package com.lidong.maxbox;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +18,23 @@ import java.util.List;
 
 import me.relex.circleindicator.CircleIndicator;
 
+/*
+ * 主界面的切换由 ViewPager通过 FragmentPagerAdapter 加载 两个 Fragment 展示
+ *
+ * 这两个 Fragment 的界面 由 RecyclerView 组成，网格布局，每行 三个；
+ * 通过 继承自RecyclerView.Adapter 的自定义的 MyToolsMenuAdapter 加载不同的功能，
+ * MyToolsMenuAdapter 里面传入 一个自定义的接口 ToolsClickCallback，用于监听 点击事件是在哪个菜单的哪个位置
+ *
+ * ToolsClickCallback 实现是在该主界面中，通过回调点击事件的位置，
+ * 使用 ActivityFactory.createActivityByMenuAndPosition（） 方法来创建对应的跳转界面。
+ *
+ * 这样实现的目的 是为了增加 可拓展性，
+ *
+ * 如果需要增加更多的展示界面，或者是 每个展示界面上 增加更多的功能。
+ * 只需要修改相应的 Adapter 即可。
+ *
+ * 而相应的界面跳转 只需要在 ActivityFactory 中注册一下即可。
+ */
 public class MainActivity extends AppCompatActivity {
 
     private ViewPager main_viewpager;
@@ -45,12 +61,15 @@ public class MainActivity extends AppCompatActivity {
         listFragments = new ArrayList<>();
         listFragments.add(new MainFragment(0,toolsClickCallback));
         listFragments.add(new MainFragment(1,toolsClickCallback));
-
         myMainFragmentAdapterAdapter = new MyMainFragmentAdapter(getSupportFragmentManager(),listFragments);
+
         main_viewpager.setAdapter(myMainFragmentAdapterAdapter);
         indicator.setViewPager(main_viewpager);
     }
 
+    /*
+     * 自定义接口并实现，将它传入 MainFragment 中，用于回调点击事件的位置
+     */
     private ToolsClickCallback toolsClickCallback = new ToolsClickCallback() {
 
         @Override
