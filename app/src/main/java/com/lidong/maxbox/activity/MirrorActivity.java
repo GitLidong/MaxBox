@@ -7,8 +7,8 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.ImageFormat;
 import android.graphics.Matrix;
-import android.graphics.PixelFormat;
 import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,7 +16,6 @@ import android.os.Environment;
 import android.support.v4.content.FileProvider;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
 import android.view.Menu;
 import android.view.Surface;
 import android.view.SurfaceHolder;
@@ -25,9 +24,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
@@ -37,7 +34,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -71,6 +67,7 @@ public class MirrorActivity extends Activity implements View.OnClickListener,
     //存储照片名字，及文件
     private File pictureFile;
     private String pictureName;
+    private Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,7 +147,7 @@ public class MirrorActivity extends Activity implements View.OnClickListener,
             }
         }
         //先将图片写入bitmap中
-        Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+        bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
         try {
             //将 bitmap 旋转270度，不知道为什么拍完照存储照片会自动旋转90度。
             Matrix matrix = new Matrix();
@@ -165,7 +162,7 @@ public class MirrorActivity extends Activity implements View.OnClickListener,
             Log.d(TAG, "File not found: " + e.getMessage());
         } catch (IOException e) {
             Log.d(TAG, "Error accessing file: " + e.getMessage());
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -301,21 +298,7 @@ public class MirrorActivity extends Activity implements View.OnClickListener,
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            //获取其他常用设置
-            Camera.Parameters parameters = mCamera.getParameters();
-            List<Camera.Size> sizeList = parameters.getSupportedPreviewSizes();
-            getSuitableSize(sizeList);
-            Log.i(TAG,screenWidth+"  "+screenHeight);
-            //获得摄像区域的大小
-            parameters.setPreviewSize(screenWidth, screenHeight);
-            //设置图片大小
-            parameters.setPictureSize(screenWidth,screenHeight);
-            /* 每秒从摄像头捕获5帧画面， */
-            parameters.setPreviewFrameRate(5);
-            /* 设置照片的输出格式:jpg */
-            parameters.setPictureFormat(PixelFormat.JPEG);
-            /* 照片质量 */
-            parameters.set("jpeg-quality", 85);
+            setCameraParameters(mCamera);
             isCameraWorking = true;
         }
         else {
@@ -410,19 +393,38 @@ public class MirrorActivity extends Activity implements View.OnClickListener,
         }
     }
 
+    /*
+     * 设置相机的部分参数
+     */
+    private void setCameraParameters(Camera camera) {
+        //获取其他常用设置
+        Camera.Parameters parameters = camera.getParameters();
+        parameters.setPictureFormat(ImageFormat.JPEG);
+        parameters.setJpegQuality(100);
+        List<Camera.Size> sizeList = parameters.getSupportedPictureSizes();
+        Camera.Size resultSize = getSuitableSize(sizeList);
+        Log.i("lidong",resultSize.width+" suitbale "+resultSize.height);
+        parameters.setPictureSize(resultSize.width,resultSize.height);
+
+        mCamera.setParameters(parameters);
+    }
+
     //获得合适的尺寸
-    private void getSuitableSize(List<Camera.Size> sizeList) {
+    private Camera.Size getSuitableSize(List<Camera.Size> sizeList) {
+        int lastDiff = Math.abs(sizeList.get(0).height - screenWidth );
+        int nowDiff;
+        int index = 0;
         if (sizeList.size() > 1) {
-            Iterator<Camera.Size> itor = sizeList.iterator();
-            while (itor.hasNext()) {
-                Camera.Size cur = itor.next();
-                if (cur.width >= screenWidth && cur.height >= screenHeight) {
-                    screenWidth = cur.width;
-                    screenHeight = cur.height;
-                    break;
+            for (int i=0 ;i<sizeList.size();i++) {
+                nowDiff = Math.abs(sizeList.get(i).height - screenWidth);
+                if (lastDiff >= nowDiff) {
+                    lastDiff = nowDiff;
+                    index = i;
                 }
             }
         }
+        return sizeList.get(index);
     }
+
 }
 
