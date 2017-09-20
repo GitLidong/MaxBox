@@ -1,6 +1,5 @@
 package com.lidong.maxbox.activity.QrcodeSonAcitvity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -14,6 +13,8 @@ import android.widget.Toast;
 import com.lidong.maxbox.R;
 import com.lidong.maxbox.database.MyDatabaseHelper;
 import com.lidong.maxbox.database.QrcodeData;
+import com.lidong.maxbox.manager.ActivityCollector;
+import com.lidong.maxbox.manager.MyActivity;
 import com.lidong.maxbox.util.EncodingUtils;
 import com.lidong.maxbox.util.ImageInfoBean;
 
@@ -21,7 +22,7 @@ import com.lidong.maxbox.util.ImageInfoBean;
  * Created by ubuntu on 17-9-17.
  */
 
-public class ContactActivity extends Activity implements View.OnClickListener{
+public class ContactActivity extends MyActivity implements View.OnClickListener{
     private Button delete;
     private Button add;
     private TextView type;
@@ -157,8 +158,7 @@ public class ContactActivity extends Activity implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.delete:
-                Intent intent1 = new Intent (ContactActivity.this,QrcodePickActivity.class);
-                startActivity(intent1);
+                ActivityCollector.removeActivity(this);
                 break;
             case R.id.add:
                 initData();

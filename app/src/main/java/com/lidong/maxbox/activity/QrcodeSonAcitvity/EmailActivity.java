@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.lidong.maxbox.R;
 import com.lidong.maxbox.database.MyDatabaseHelper;
 import com.lidong.maxbox.database.QrcodeData;
+import com.lidong.maxbox.manager.ActivityCollector;
 import com.lidong.maxbox.util.EncodingUtils;
 import com.lidong.maxbox.util.ImageInfoBean;
 
@@ -59,8 +60,7 @@ public class EmailActivity extends Activity implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.delete:
-                Intent intent1 = new Intent (EmailActivity.this,QrcodePickActivity.class);
-                startActivity(intent1);
+                ActivityCollector.removeActivity(this);
                 break;
             case R.id.add:
                 texts = text.getText().toString();

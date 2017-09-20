@@ -1,11 +1,9 @@
 package com.lidong.maxbox.activity.QrcodeSonAcitvity;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,6 +15,8 @@ import com.lidong.maxbox.activity.QRcodeActivity;
 import com.lidong.maxbox.adapter.QrcodeShowAdapter;
 import com.lidong.maxbox.database.MyDatabaseHelper;
 import com.lidong.maxbox.database.QrcodeData;
+import com.lidong.maxbox.manager.ActivityCollector;
+import com.lidong.maxbox.manager.MyActivity;
 import com.lidong.maxbox.myinterface.QrCodeClickCallback;
 import com.lidong.maxbox.util.ImageInfoBean;
 
@@ -30,7 +30,7 @@ import java.util.List;
  * 可以增 删 查
  */
 
-public class QrCodeCreateActivity extends Activity implements View.OnClickListener{
+public class QrCodeCreateActivity extends MyActivity implements View.OnClickListener{
     private String TAG = "QrCodeCreateActivity";
     private Button back;
     private Button add;
@@ -41,7 +41,7 @@ public class QrCodeCreateActivity extends Activity implements View.OnClickListen
     private List<QrcodeData> qrcodeDataList;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.enqrcode);
         initDatabase();
@@ -89,7 +89,8 @@ public class QrCodeCreateActivity extends Activity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.back:
-                finish();
+                Intent intent = new Intent(QrCodeCreateActivity.this,QRcodeActivity.class);
+                startActivity(intent);
                 break;
             case R.id.add:
                 Intent intent2 = new Intent(QrCodeCreateActivity.this,QrcodePickActivity.class);
@@ -98,9 +99,16 @@ public class QrCodeCreateActivity extends Activity implements View.OnClickListen
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(QrCodeCreateActivity.this,QRcodeActivity.class);
+        startActivity(intent);
+    }
+
     /*
-     * 自定义接口，用于回调 RecyclerView 的 Adapter的点击事件
-     */
+                 * 自定义接口，用于回调 RecyclerView 的 Adapter的点击事件
+                 */
     private QrCodeClickCallback qrCodeClickCallback = new QrCodeClickCallback() {
         @Override
         public void scallQr(String imageFile) {

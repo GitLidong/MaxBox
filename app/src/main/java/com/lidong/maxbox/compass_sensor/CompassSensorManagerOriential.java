@@ -5,6 +5,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.lidong.maxbox.R;
@@ -18,6 +19,7 @@ public class CompassSensorManagerOriential extends CompassSensorManager {
 
 		@Override
 		public void onSensorChanged(SensorEvent event) {
+			Log.i("lidong","event[0] : "+event.values[0]);
 			float direction = event.values[0] * -1.0f;
 			mCurrentDirection = processDegree(direction);
 		}

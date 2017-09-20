@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lidong.maxbox.R;
+import com.lidong.maxbox.manager.MyActivity;
 import com.lidong.maxbox.util.ImageInfoBean;
 
 import java.io.FileNotFoundException;
@@ -21,7 +22,7 @@ import java.io.FileNotFoundException;
  * 这个界面用于查看具体的某个 二维码
  */
 
-public class DisplayQrcodeActivity extends Activity implements View.OnClickListener{
+public class DisplayQrcodeActivity extends MyActivity implements View.OnClickListener{
     private Button back;
     private TextView type;
     private String type_name;
@@ -52,8 +53,7 @@ public class DisplayQrcodeActivity extends Activity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.back:
-                Intent intent = new Intent(DisplayQrcodeActivity.this,QrCodeCreateActivity.class);
-                startActivity(intent);
+                backToWhereFrom();
                 break;
         }
     }
@@ -61,15 +61,7 @@ public class DisplayQrcodeActivity extends Activity implements View.OnClickListe
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (flag == 0) {
-            Intent intent1 = new Intent(DisplayQrcodeActivity.this,QrcodePickActivity.class);
-            startActivity(intent1);
-        }
-        if (flag == 1) {
-            Intent intent2 = new Intent(DisplayQrcodeActivity.this,QrCodeCreateActivity.class);
-            startActivity(intent2);
-        }
-
+        backToWhereFrom();
     }
 
     private void backFillData() {
@@ -87,6 +79,20 @@ public class DisplayQrcodeActivity extends Activity implements View.OnClickListe
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        }
+    }
+
+    /*
+     * 从哪来回到哪去
+     */
+    private void backToWhereFrom() {
+        if (flag == 0) {
+            Intent intent1 = new Intent(DisplayQrcodeActivity.this,QrcodePickActivity.class);
+            startActivity(intent1);
+        }
+        if (flag == 1) {
+            Intent intent2 = new Intent(DisplayQrcodeActivity.this,QrCodeCreateActivity.class);
+            startActivity(intent2);
         }
     }
 }

@@ -48,6 +48,10 @@
         android:layout_height="0dp">
 
         <EditText
+            android:id="@+id/unit_num_input"
+            android:inputType="number"
+            android:imeOptions="actionDone"
+            android:textColor="@color/black"
             android:background="@drawable/unit_edittext_background"
             android:layout_margin="3dp"
             android:layout_weight="1"

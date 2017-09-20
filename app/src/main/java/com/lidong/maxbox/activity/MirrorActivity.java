@@ -262,7 +262,6 @@ public class MirrorActivity extends Activity implements View.OnClickListener
         window.setAttributes(lp);
     }
 
-    //判断 SDcard是否可用
     public boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)) {

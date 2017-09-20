@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.lidong.maxbox.R;
+import com.lidong.maxbox.manager.ActivityCollector;
+import com.lidong.maxbox.manager.MyActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,7 +24,7 @@ import java.util.Map;
  * Created by ubuntu on 17-9-13.
  */
 
-public class QrcodePickActivity extends Activity implements View.OnClickListener,
+public class QrcodePickActivity extends MyActivity implements View.OnClickListener,
         AdapterView.OnItemClickListener{
     private Button back;
     private String[] type_texts;
@@ -79,10 +81,17 @@ public class QrcodePickActivity extends Activity implements View.OnClickListener
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.back:
-                Intent intent = new Intent(QrcodePickActivity.this, QrCodeCreateActivity.class);
+                Intent intent = new Intent(QrcodePickActivity.this,QrCodeCreateActivity.class);
                 startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(QrcodePickActivity.this,QrCodeCreateActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -99,13 +108,6 @@ public class QrcodePickActivity extends Activity implements View.OnClickListener
         public DemoInfo(Class<? extends Activity> demoClass) {
             this.demoClass = demoClass;
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent2 = new Intent(QrcodePickActivity.this,QrCodeCreateActivity.class);
-        startActivity(intent2);
     }
 }
 

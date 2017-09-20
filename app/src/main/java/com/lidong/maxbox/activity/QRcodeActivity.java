@@ -1,6 +1,5 @@
 package com.lidong.maxbox.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +22,8 @@ import com.lidong.maxbox.camera.CameraManager;
 import com.lidong.maxbox.decode.CaptureActivityHandler;
 import com.lidong.maxbox.decode.DecodeManager;
 import com.lidong.maxbox.decode.InactivityTimer;
+import com.lidong.maxbox.manager.ActivityCollector;
+import com.lidong.maxbox.manager.MyActivity;
 import com.lidong.maxbox.views.QrCodeFinderView;
 
 import java.io.IOException;
@@ -32,7 +33,7 @@ import java.io.IOException;
  * 二维码扫描类。
  */
 
-public class QRcodeActivity extends Activity implements SurfaceHolder.Callback, View.OnClickListener {
+public class QRcodeActivity extends MyActivity implements SurfaceHolder.Callback, View.OnClickListener {
 
     private String TAG = "QRcodeActivity";
 
@@ -140,14 +141,19 @@ public class QRcodeActivity extends Activity implements SurfaceHolder.Callback, 
                 }
                 break;
             case R.id.back:
-                Intent intent = new Intent(QRcodeActivity.this, MainActivity.class);
-                startActivity(intent);
+                ActivityCollector.finishAllActivities();
                 break;
             case R.id.encode_btn:
                 Intent intent1 = new Intent(QRcodeActivity.this,QrCodeCreateActivity.class);
                 startActivity(intent1);
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ActivityCollector.finishAllActivities();
     }
 
     @Override
