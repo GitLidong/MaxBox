@@ -4,16 +4,19 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.lidong.maxbox.R;
 
+import java.util.List;
+
 /**
  * Created by ubuntu on 17-9-11.
  */
 
-public class UnitSpinnerAdapter extends BaseAdapter{
+public class UnitSpinnerAdapter extends ArrayAdapter<String>{
 
     private String TAG = "UnitSpinnerAdapter";
 
@@ -21,7 +24,9 @@ public class UnitSpinnerAdapter extends BaseAdapter{
     private String [] unitSpinnerArray;
     private TextView unitText;
 
-    public UnitSpinnerAdapter(Context context,int whichUnit){
+    public UnitSpinnerAdapter(Context context, int resource,
+                              int textViewResourceId, int whichUnit,List<String> objects){
+        super(context,resource,textViewResourceId,objects);
         this.context = context;
 
         switch (whichUnit) {
@@ -66,7 +71,7 @@ public class UnitSpinnerAdapter extends BaseAdapter{
     }
 
     @Override
-    public Object getItem(int position) {
+    public String getItem(int position) {
         return unitSpinnerArray[position];
     }
 
