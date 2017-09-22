@@ -1,12 +1,18 @@
 package com.lidong.maxbox.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
+import com.lidong.maxbox.MainActivity;
 import com.lidong.maxbox.R;
 import com.lidong.maxbox.adapter.UnitBottomSelectedAdapter;
 import com.lidong.maxbox.adapter.UnitSelectedShowAdapter;
@@ -15,7 +21,7 @@ import com.lidong.maxbox.myinterface.UnitBottomClickCallback;
 
 import java.util.Calendar;
 
-public class UnitConverterActivity extends AppCompatActivity {
+public class UnitConverterActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Spinner unit_spinner;
     private UnitSpinnerAdapter unitSpinnerAdapter;
@@ -25,6 +31,8 @@ public class UnitConverterActivity extends AppCompatActivity {
 
     private RecyclerView unit_recyclerview_show;
     private UnitSelectedShowAdapter unitSelectedShowAdapter;
+
+    private Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +66,21 @@ public class UnitConverterActivity extends AppCompatActivity {
         unitSelectedShowAdapter = new UnitSelectedShowAdapter(0);
         unit_recyclerview_show.setAdapter(unitSelectedShowAdapter);
 
+        //返回键
+        back = (Button) findViewById(R.id.unit_converter_title_back);
+        back.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.unit_converter_title_back:
+                finish();
+                break;
+            default:
+                break;
+        }
     }
 
     private UnitBottomClickCallback callback = new UnitBottomClickCallback() {
@@ -73,5 +96,7 @@ public class UnitConverterActivity extends AppCompatActivity {
 
         }
     };
+
+
 
 }
