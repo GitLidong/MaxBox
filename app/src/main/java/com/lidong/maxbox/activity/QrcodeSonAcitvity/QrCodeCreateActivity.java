@@ -3,7 +3,11 @@ package com.lidong.maxbox.activity.QrcodeSonAcitvity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,13 +19,13 @@ import com.lidong.maxbox.activity.QRcodeActivity;
 import com.lidong.maxbox.adapter.QrcodeShowAdapter;
 import com.lidong.maxbox.database.MyDatabaseHelper;
 import com.lidong.maxbox.database.QrcodeData;
-import com.lidong.maxbox.manager.ActivityCollector;
 import com.lidong.maxbox.manager.MyActivity;
 import com.lidong.maxbox.myinterface.QrCodeClickCallback;
 import com.lidong.maxbox.util.ImageInfoBean;
 
 import org.litepal.LitePal;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 /**
@@ -117,7 +121,11 @@ public class QrCodeCreateActivity extends MyActivity implements View.OnClickList
 
         @Override
         public void shareQr(String imageFile) {
-
+            try {
+                shareQrcode(imageFile);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override
@@ -165,5 +173,21 @@ public class QrCodeCreateActivity extends MyActivity implements View.OnClickList
                     }
                 });
         alertDialog.show();
+    }
+
+    /*
+     * 用于分享提示,当分享时候，会在本地的相册下面生成该二维码图片，
+     * 对比其他软件的分析，觉得该图片不用做删除处理，用户可以自行删除。
+     */
+    private void shareQrcode(String imageFile) throws FileNotFoundException {
+        QrcodeData temp = MyDatabaseHelper.getQrcodeData(imageFile);
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("image/*");
+        Bitmap bitmap = BitmapFactory.decodeStream(this.openFileInput(temp.getImageFile()));
+        Uri uri = Uri.parse(MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, null,null));
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "OurMaxTools-"+temp.getQrName());
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(Intent.createChooser(intent, getTitle()));
     }
 }
