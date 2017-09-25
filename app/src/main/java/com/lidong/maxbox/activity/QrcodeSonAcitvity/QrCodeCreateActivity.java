@@ -142,7 +142,14 @@ public class QrCodeCreateActivity extends MyActivity implements View.OnClickList
         Intent intent = new Intent(QrCodeCreateActivity.this,DisplayQrcodeActivity.class);
         ImageInfoBean infoBean = new ImageInfoBean();
         infoBean.setName(temp.getQrName());
-        infoBean.setDescription("Content:"+temp.getQrContent());
+        if (temp.getQrName().equals("Text") || temp.getQrName().equals("Url")) {
+            infoBean.setDescription("Content:"+temp.getQrContent());
+        } else if (temp.getQrName().equals("Email")) {
+           infoBean.setDescription("Address:"+ temp.getQrContent());
+        } else {
+            infoBean.setDescription(temp.getQrContent());
+        }
+
         infoBean.setUri(temp.getImageFile());
         intent.putExtra("type",temp.getQrName());
         intent.putExtra("encode_text", infoBean);

@@ -59,7 +59,7 @@
             android:textSize="12sp"
             android:textColor="#CFCFCF"
             android:textColorHint="#CFCFCF"
-            android:maxLength="200"
+            android:maxLength="18"
             android:phoneNumber="true"
             android:background="@drawable/input_background"
             android:textCursorDrawable="@null"
