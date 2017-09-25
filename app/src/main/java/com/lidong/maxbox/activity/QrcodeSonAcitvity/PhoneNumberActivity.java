@@ -58,7 +58,7 @@ public class PhoneNumberActivity extends MyActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.delete:
-                ActivityCollector.removeActivity(this);
+                finish();
                 break;
             case R.id.add:
                 texts = text.getText().toString();

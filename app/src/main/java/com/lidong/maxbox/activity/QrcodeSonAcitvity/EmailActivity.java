@@ -60,7 +60,7 @@ public class EmailActivity extends Activity implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.delete:
-                ActivityCollector.removeActivity(this);
+                finish();
                 break;
             case R.id.add:
                 texts = text.getText().toString();
