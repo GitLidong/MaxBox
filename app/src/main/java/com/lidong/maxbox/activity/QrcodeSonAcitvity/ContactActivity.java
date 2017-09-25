@@ -164,9 +164,29 @@ public class ContactActivity extends MyActivity implements View.OnClickListener{
                 initData();
                 if ("".equals(name) || name == null) {
                     Toast.makeText(ContactActivity.this,"The input  of name is empty",Toast.LENGTH_SHORT).show();
+                    break;
                 } else if (phone1.equals("") && phone2.equals("") && phone3.equals("")) {
                     Toast.makeText(ContactActivity.this,"The input  of number is empty",Toast.LENGTH_SHORT).show();
+                    break;
                 } else {
+                    if (!email.equals("")) {
+                        if (!email1.equals("")) {
+                            if (EncodingUtils.checkEmail(email1) == false) {
+                                Toast.makeText(ContactActivity.this,"The format of email is invalid",Toast.LENGTH_SHORT).show();
+                                break;
+                            }
+                        } else if (!email2.equals("")) {
+                            if (EncodingUtils.checkEmail(email2) == false) {
+                                Toast.makeText(ContactActivity.this,"The format of email is invalid",Toast.LENGTH_SHORT).show();
+                                break;
+                            }
+                        } else if (!email3.equals("")) {
+                            if (EncodingUtils.checkEmail(email3) == false) {
+                                Toast.makeText(ContactActivity.this,"The format of email is invalid",Toast.LENGTH_SHORT).show();
+                                break;
+                            }
+                        }
+                    }
                     bitmap = EncodingUtils.createQRCode_text(content);
                     String uri = EncodingUtils.createImageFromBitmap(bitmap);
 
