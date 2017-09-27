@@ -8,6 +8,7 @@ import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathEffect;
+import android.icu.text.DecimalFormat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -32,7 +33,7 @@ public class GuideLine extends View{
     private float bmLeft;
     private Bitmap bitmap;
 
-    private RulerSizeCallback rulerSizeCallback;
+    private RulerSizeCallback rulerSizeCallback = null;
 
     private void initData() {
 
@@ -107,16 +108,21 @@ public class GuideLine extends View{
         float distanceToline1 = Math.abs(actionDownY - line1Height);
         float distanceToline2 = Math.abs(actionDownY - line2Height);
 
-        float cm = Math.abs(line1Height - line2Height);
-        float inch = Math.abs(line1Height - line2Height);
+        DecimalFormat decimalFormat=new DecimalFormat("0.00");
+        String cm = decimalFormat.format(Math.abs(line1Height - line2Height)/200);
+        String inch = decimalFormat.format(Math.abs(line1Height - line2Height)/200/2.54);
 
         if (distanceToline1 <= distanceToline2 ) {
             setLine1Height(actionDownY);
         } else {
             setLine2Height(actionDownY);
         }
-        rulerSizeCallback.setRulerSizeCm(cm);
-        rulerSizeCallback.setRuleSizeInch(inch);
+        if (rulerSizeCallback != null){
+            rulerSizeCallback.setRulerSizeCm(cm);
+            rulerSizeCallback.setRuleSizeInch(inch);
+        } else {
+
+        }
         invalidate();
         return true;
     }

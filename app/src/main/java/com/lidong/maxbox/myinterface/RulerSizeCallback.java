@@ -5,6 +5,6 @@ package com.lidong.maxbox.myinterface;
  */
 
 public interface RulerSizeCallback {
-    void setRulerSizeCm(float cm);
-    void setRuleSizeInch(float inch);
+    void setRulerSizeCm(String cm);
+    void setRuleSizeInch(String inch);
 }

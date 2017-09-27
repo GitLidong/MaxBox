@@ -17,8 +17,16 @@ public class RulerView extends View{
 
     private Paint paintCenter;
     private Paint paintScale;
+    private Paint paintCm;
 
-    private  float fromY;
+    private float fromY;
+    private float cmLongFromX,cmShortFromX;
+    private float cmFromY;
+    private float toX;
+
+    private float inchLongToX,inchShortToX;
+    private float inchFromX;
+
     private int centerX;
     private int pointDiameter;
     private int lineHeight;
@@ -40,6 +48,12 @@ public class RulerView extends View{
         paintScale.setColor(getResources().getColor(R.color.colorSteelBlue));
         paintScale.setStyle(Paint.Style.FILL);
         paintScale.setStrokeWidth(5);
+
+        paintCm = new Paint();
+        paintCm.setAntiAlias(true);
+        paintCm.setColor(getResources().getColor(R.color.colorSteelBlue));
+        paintCm.setStyle(Paint.Style.FILL);
+        paintCm.setStrokeWidth(2);
     }
 
     public RulerView(Context context) {
@@ -64,6 +78,20 @@ public class RulerView extends View{
         canvas.drawCircle(centerX,fromY,pointDiameter,paintCenter);
 
         canvas.drawLine(centerX,fromY,centerX,lineHeight,paintCenter);
+
+        for(int i=0;i<10;i++){
+            canvas.drawLine(cmLongFromX,cmFromY+i*200,toX,cmFromY+i*200,paintCm);
+            canvas.drawText(String.valueOf(i+1),cmLongFromX-pointDiameter,cmFromY+i*200,paintCm);
+
+            canvas.drawLine(inchFromX,cmFromY+i*508,inchLongToX,cmFromY+i*508,paintCm);
+            canvas.drawText(String.valueOf(i+1),inchLongToX+pointDiameter,cmFromY+i*508,paintCm);
+
+            for(int j=1;j<=4;j++){
+                canvas.drawLine(cmShortFromX,cmFromY+i*200+j*40,toX,cmFromY+i*200+j*40,paintCm);
+                canvas.drawLine(inchFromX,(float) (cmFromY+i*508+j*101.6),
+                        inchShortToX,(float) (cmFromY+i*508+j*101.6),paintCm);
+            }
+        }
     }
 
     @Override
@@ -75,5 +103,14 @@ public class RulerView extends View{
         lineHeight = h;
 
         fromY = 2*pointDiameter;
+        cmFromY = 3*pointDiameter;
+
+        cmLongFromX = w - 6*pointDiameter;
+        cmShortFromX = w - 4*pointDiameter;
+        toX = w - 2*pointDiameter;
+
+        inchFromX = 2*pointDiameter;
+        inchLongToX = 6*pointDiameter;
+        inchShortToX = 4*pointDiameter;
     }
 }

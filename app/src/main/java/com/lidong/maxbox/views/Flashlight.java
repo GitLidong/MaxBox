@@ -22,42 +22,24 @@ import com.lidong.maxbox.R;
 public class Flashlight extends ViewGroup {
     private static String TAG = "Flashlight";
     public boolean mState = false;
-    private static PowerManager mPowerMgr;
-    private PowerManager.WakeLock mPowerWakeLock;
+
     private Context mContext;
     private CameraManager mCameraManager;
     private int mLeft;
     private int mRight;
     private int mTop;
     private int mBottom;
-    //add by zhangpengfei for ICE2-120 sync status with status bar
     private CameraManager.TorchCallback mTorchCallback;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public Flashlight(Context context, AttributeSet attrs) {
         super(context, attrs);
         setBackground(mState);
-        mPowerMgr = null;
-        mPowerWakeLock = null;
+
         mContext = context;
 
-        PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
-            @Override
-            public void onCallStateChanged(int state, String incomingNumber) {
-                // TODO Auto-generated method stub
-                super.onCallStateChanged(state, incomingNumber);
-                if (state == TelephonyManager.CALL_STATE_RINGING) {
-                    if (mState) {
-                        mState = false;
-                        setBackground(false);
-                        setFlashLight(mState);
-                    }
-                }
-            }
-        };
-        getTelephonyManager().listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
         mCameraManager = (CameraManager) mContext.getSystemService(Context.CAMERA_SERVICE);
-        //modify by zhangpengfei for ICE2-120 sync status with status bar start
+
         mTorchCallback = new CameraManager.TorchCallback() {
             @Override
             public void onTorchModeChanged(String cameraId, boolean enabled) {
@@ -67,21 +49,11 @@ public class Flashlight extends ViewGroup {
                 }
             }
         };
-        //modify by zhangpengfei for ICE2-120 sync status with status bar end
         mCameraManager.registerTorchCallback(mTorchCallback, null);
     }
 
     public Flashlight(Context context) {
         super(context, null);
-    }
-
-    private TelephonyManager getTelephonyManager() {
-        return (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
-    }
-
-    public void setPowerManager(PowerManager mpoerMgr) {
-        mPowerMgr = mpoerMgr;
-        mPowerWakeLock = mPowerMgr.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "FlashLight");
     }
 
     public void setBackground(boolean state) {
@@ -141,7 +113,7 @@ public class Flashlight extends ViewGroup {
         }
     }
 
-    //add by zhangpengfei for ICE2-120 sync status with status bar
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void unregisterTorchCallback() {
         mCameraManager.unregisterTorchCallback(mTorchCallback);

@@ -14,16 +14,13 @@ import com.lidong.maxbox.views.Flashlight;
 public class FlashlightActivity extends AppCompatActivity {
 
     private Flashlight mFlashlight;
-    private static String TAG = "FlashlightActivity";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initFullScreen();
         setContentView(R.layout.activity_flashlight);
-        PowerManager mPowerMgr = (PowerManager) getSystemService(POWER_SERVICE);
         mFlashlight = (Flashlight)findViewById(R.id.flashlight);
-        mFlashlight.setPowerManager(mPowerMgr);
     }
 
     @Override

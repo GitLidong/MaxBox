@@ -18,7 +18,7 @@
         android:layout_alignParentRight="true"
         android:textColor="@color/colorSteelBlue"
         android:textSize="20sp"
-        android:text="15.00 cm"
+        android:text="1.00 cm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
@@ -27,7 +27,7 @@
         android:layout_alignParentLeft="true"
         android:textColor="@color/colorSteelBlue"
         android:textSize="20sp"
-        android:text="1.00 inch"
+        android:text="0.39 inch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <com.lidong.maxbox.views.RulerView

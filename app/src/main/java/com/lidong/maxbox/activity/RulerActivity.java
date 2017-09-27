@@ -53,7 +53,7 @@ public class RulerActivity extends AppCompatActivity{
         double x = Math.pow(point.x/ dm.xdpi, 2);
         double y = Math.pow(point.y / dm.ydpi, 2);
         double screenInches = Math.sqrt(x + y);//英寸
-        Log.d(TAG, "Screen inches : " + x + "  "+y);
+        Log.d(TAG, "Screen inches : " +screenInches);
     }
 
     private void initView() {
@@ -69,12 +69,12 @@ public class RulerActivity extends AppCompatActivity{
 
     private RulerSizeCallback sizeCallback = new RulerSizeCallback() {
         @Override
-        public void setRulerSizeCm(float cm) {
+        public void setRulerSizeCm(String cm) {
             rule_size_cm.setText(cm+" cm");
         }
 
         @Override
-        public void setRuleSizeInch(float inch) {
+        public void setRuleSizeInch(String inch) {
             rule_size_inch.setText(inch+" inch");
         }
     };
