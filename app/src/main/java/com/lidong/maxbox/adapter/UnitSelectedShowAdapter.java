@@ -22,7 +22,17 @@ public class UnitSelectedShowAdapter extends RecyclerView.Adapter<UnitSelectedSh
     private String [] showUnit ;
     private String [] showData;
 
-    public UnitSelectedShowAdapter (int which) {
+    private void UpdateshowData(int spinnerUnit, float inputNum){
+        Float [] dData = new Float[showData.length];
+        float scale = (float) (inputNum/Float.parseFloat(showData[spinnerUnit]));
+        for (int i = 0; i < showData.length; i++) {
+            dData[i] = (float)(scale * Float.parseFloat(showData[i]));
+            showData[i] = Float.toString(dData[i]);
+            Log.d("gongwei", "UnitSelectedShowAdapter:"+Integer.toString(i)+"; float后数据:"+Float.toString(dData[i]));
+        }
+    }
+
+    public UnitSelectedShowAdapter (int which, int spinnerUnit, float inputNum) {
 
         Context context = MyApplication.getContext();
         switch (which ) {
@@ -69,6 +79,7 @@ public class UnitSelectedShowAdapter extends RecyclerView.Adapter<UnitSelectedSh
             default:
                 break;
         }
+        UpdateshowData(spinnerUnit,inputNum);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -99,4 +110,5 @@ public class UnitSelectedShowAdapter extends RecyclerView.Adapter<UnitSelectedSh
     public int getItemCount() {
         return showUnit.length !=0 ? showUnit.length : 0;
     }
+
 }

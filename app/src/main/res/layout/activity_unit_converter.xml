@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.lidong.maxbox.activity.UnitConverterActivity">
+
     <RelativeLayout
         android:id="@+id/unit_converter_title_layout"
         android:layout_width="match_parent"
@@ -38,8 +39,8 @@
             android:layout_height="match_parent">
 
         </android.support.v7.widget.RecyclerView>
-
     </RelativeLayout>
+
     <LinearLayout
         android:background="@color/colorWhite"
         android:layout_weight="1"
@@ -47,11 +48,16 @@
         android:layout_height="0dp">
 
         <EditText
+            android:id="@+id/unit_edittext"
             android:background="@drawable/unit_edittext_background"
             android:layout_margin="3dp"
             android:layout_weight="1"
+            android:text="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:inputType="number|numberDecimal"
+            android:textColor="@color/black"
+            android:imeOptions="actionDone" />
 
         <Spinner
             android:background="@color/gray"
@@ -62,8 +68,8 @@
             android:layout_margin="3dp"
             android:spinnerMode="dialog">
         </Spinner>
-
     </LinearLayout>
+
     <RelativeLayout
         android:layout_weight="2"
         android:layout_width="match_parent"
@@ -75,7 +81,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </android.support.v7.widget.RecyclerView>
-
     </RelativeLayout>
 
 </LinearLayout>

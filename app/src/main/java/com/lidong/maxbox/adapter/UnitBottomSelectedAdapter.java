@@ -1,12 +1,11 @@
 package com.lidong.maxbox.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -37,12 +36,11 @@ public class UnitBottomSelectedAdapter extends RecyclerView.Adapter<UnitBottomSe
         this.callback = callback;
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public int position;
 
-        private RelativeLayout cell_unit_select_back;
+        public RelativeLayout cell_unit_select_back;
         private ImageView cell_unit_select_image;
         private TextView cell_unit_select_text;
 
@@ -56,6 +54,8 @@ public class UnitBottomSelectedAdapter extends RecyclerView.Adapter<UnitBottomSe
                 @Override
                 public void onClick(View v) {
                     callback.changeView(position);
+                    //cell_unit_select_back.setBackground(MyApplication.getContext().getDrawable(R.drawable.size_tool_tab_selected));
+
                 }
             });
 
@@ -63,6 +63,7 @@ public class UnitBottomSelectedAdapter extends RecyclerView.Adapter<UnitBottomSe
                 @Override
                 public boolean onLongClick(View v) {
                     callback.changeView(position);
+                    //cell_unit_select_back.setBackground(MyApplication.getContext().getDrawable(R.drawable.size_tool_tab_selected));
                     return false;
                 }
             });
@@ -81,11 +82,12 @@ public class UnitBottomSelectedAdapter extends RecyclerView.Adapter<UnitBottomSe
         holder.position = position;
         holder.cell_unit_select_image.setBackgroundResource(selectResourceImage[position]);
         holder.cell_unit_select_text.setText(selectResourceName[position]);
+        holder.itemView.setTag(position);
     }
-
 
     @Override
     public int getItemCount() {
         return selectResourceImage.length;
     }
+
 }
